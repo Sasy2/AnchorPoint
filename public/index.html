@@ -182,8 +182,9 @@ async function updateUIForAuthenticatedUser() {
 
 function showAuthOptions() {
     // Add click handlers to login/signup buttons
-    const loginBtn = document.querySelector('button:contains("Log In")');
-    const signupBtn = document.querySelector('button:contains("Sign Up")');
+    const buttons = document.querySelectorAll('header button');
+    const loginBtn = Array.from(buttons).find(btn => btn.textContent.includes('Log In'));
+    const signupBtn = Array.from(buttons).find(btn => btn.textContent.includes('Sign Up'));
     
     if (loginBtn) {
         loginBtn.addEventListener('click', () => showLoginModal());

@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
-require('dotenv').config();
+const config = require('./config');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = config.PORT;
 
 // Middleware
 app.use(cors());
@@ -15,10 +15,10 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Initialize Google AI
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY || 'AIzaSyD2zftsPT3y4To2altLClRrll64HMep-m4');
+const genAI = new GoogleGenerativeAI(config.GOOGLE_AI_API_KEY);
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/mentalhealthcoach', {
+mongoose.connect(config.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -130,7 +130,7 @@ const authenticateToken = async (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
+    const decoded = jwt.verify(token, config.JWT_SECRET);
     const user = await User.findById(decoded.userId);
     if (!user) {
       return res.status(401).json({ error: 'Invalid token' });
@@ -194,7 +194,7 @@ app.post('/api/auth/register', async (req, res) => {
     const user = new User({ email, password: hashedPassword, name });
     await user.save();
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET || 'your-secret-key');
+    const token = jwt.sign({ userId: user._id }, config.JWT_SECRET);
     res.json({ token, user: { id: user._id, email: user.email, name: user.name } });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
@@ -215,7 +215,7 @@ app.post('/api/auth/login', async (req, res) => {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET || 'your-secret-key');
+    const token = jwt.sign({ userId: user._id }, config.JWT_SECRET);
     res.json({ token, user: { id: user._id, email: user.email, name: user.name } });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });

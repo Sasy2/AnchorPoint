@@ -20,11 +20,5 @@
       "src": "/(.*)",
       "dest": "/public/$1"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production",
-    "JWT_SECRET": "@jwt-secret",
-    "GOOGLE_AI_API_KEY": "@google-ai-api-key",
-    "MONGODB_URI": "@mongodb-uri"
-  }
+  ]
 }

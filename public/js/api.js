@@ -3,7 +3,7 @@ class MentalHealthAPI {
   constructor() {
     this.baseURL = window.location.hostname === 'localhost' 
       ? 'http://localhost:3000/api' 
-      : 'https://anchorpoint.vercel.app/api';
+      : 'https://anchorpoint-9jmtn2bto-suzie-s-projects-e0884140.vercel.app/api';
     this.token = localStorage.getItem('authToken');
   }
 

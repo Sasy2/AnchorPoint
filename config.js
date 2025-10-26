@@ -5,10 +5,10 @@ module.exports = {
   NODE_ENV: process.env.NODE_ENV || 'development',
   
   // Database Configuration
-  MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:27017/mentalhealthcoach',
+  MONGODB_URI: process.env.MONGODB_URI || 'mongodb+srv://anchorpoint_db_user:QyKRd84kYjUCNVWm@cluster0.kv346v6.mongodb.net/anchorpoint?retryWrites=true&w=majority',
   
   // JWT Configuration
-  JWT_SECRET: process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-this-in-production',
+  JWT_SECRET: process.env.JWT_SECRET || '123',
   JWT_EXPIRES_IN: '7d',
   
   // Google AI Configuration
