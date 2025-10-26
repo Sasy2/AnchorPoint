@@ -176,6 +176,23 @@ Respond as a caring mental health coach:
 
 // Routes
 
+// Health check route
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'AnchorPoint Mental Health Coach API is running!',
+    status: 'healthy',
+    timestamp: new Date().toISOString()
+  });
+});
+
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    message: 'API is healthy',
+    status: 'ok',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Authentication Routes
 app.post('/api/auth/register', async (req, res) => {
   try {

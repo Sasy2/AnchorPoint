@@ -3,7 +3,7 @@ class MentalHealthAPI {
   constructor() {
     this.baseURL = window.location.hostname === 'localhost' 
       ? 'http://localhost:3000/api' 
-      : 'https://anchorpoint-9jmtn2bto-suzie-s-projects-e0884140.vercel.app/api';
+      : 'https://anchorpoint-4vewfps7l-suzie-s-projects-e0884140.vercel.app/api';
     this.token = localStorage.getItem('authToken');
   }
 
@@ -34,17 +34,24 @@ class MentalHealthAPI {
       ...options,
     };
 
+    console.log('Making API request to:', url);
+    console.log('Request config:', config);
+
     try {
       const response = await fetch(url, config);
-      const data = await response.json();
-
+      console.log('Response status:', response.status);
+      
       if (!response.ok) {
-        throw new Error(data.error || 'API request failed');
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
       }
-
+      
+      const data = await response.json();
+      console.log('API Response:', data);
       return data;
     } catch (error) {
-      console.error('API Error:', error);
+      console.error('API Request Failed:', error);
       throw error;
     }
   }
@@ -196,18 +203,24 @@ window.api = new MentalHealthAPI();
 window.auth = {
   async login(email, password) {
     try {
+      console.log('Attempting login for:', email);
       const response = await api.login(email, password);
+      console.log('Login successful:', response);
       return { success: true, user: response.user };
     } catch (error) {
+      console.error('Login failed:', error);
       return { success: false, error: error.message };
     }
   },
 
   async register(email, password, name) {
     try {
+      console.log('Attempting registration for:', email, name);
       const response = await api.register(email, password, name);
+      console.log('Registration successful:', response);
       return { success: true, user: response.user };
     } catch (error) {
+      console.error('Registration failed:', error);
       return { success: false, error: error.message };
     }
   },
