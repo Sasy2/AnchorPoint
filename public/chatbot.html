@@ -208,28 +208,233 @@ class Chatbot {
   }
 
   generateAIResponse(message) {
-    const responses = {
-      'anxious': "I understand that anxiety can feel overwhelming. Let's try some calming breathing exercises. Take a deep breath in for 4 counts, hold for 4 counts, breathe out for 4 counts, and hold for 4 counts. This is called box breathing and can help calm your nervous system.",
-      'sad': "I'm sorry you're feeling sad. It's okay to feel this way sometimes. Consider trying the 'Three Good Things' exercise - write down three things that went well today, no matter how small. This practice can help shift your perspective.",
-      'angry': "Anger is a valid emotion. Let's channel it constructively. Try the 5-4-3-2-1 grounding technique: Name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, and 1 you can taste. This helps bring you back to the present moment.",
-      'tired': "Feeling tired can affect your mental health. Consider doing some gentle movement or stretching. Even 5 minutes of movement can boost your energy. Also, try the body scan meditation - slowly scan your body from head to toe, noticing sensations.",
-      'happy': "That's wonderful to hear! When we're feeling good, it's a great time to build positive habits. Consider journaling about what made you feel this way, or share your joy with someone close to you.",
-      'confused': "It's okay to feel confused. Sometimes our minds need time to process. Try the RAIN technique: Recognize what you're feeling, Allow it to be there, Investigate it with curiosity, and Nurture yourself with self-compassion.",
-      'excited': "Excitement is great energy! Harness it by setting an intention for today. What would you like to achieve with this energy? Consider channeling it into a creative activity or something meaningful to you.",
-      'grateful': "Gratitude is powerful! Consider creating a gratitude list or letter. Research shows that expressing gratitude regularly can boost your overall well-being.",
-      'calm': "I'm glad you're feeling calm. This is a wonderful state for reflection and planning. Consider using this peaceful moment to set intentions for your day or engage in mindful activities."
-    };
-
-    // Check for keyword matches
     const lowerMessage = message.toLowerCase();
-    for (const [key, response] of Object.entries(responses)) {
-      if (lowerMessage.includes(key)) {
-        return response;
+    
+    // Track conversation context
+    if (!this.conversationHistory) {
+      this.conversationHistory = [];
+    }
+    this.conversationHistory.push({ role: 'user', content: message });
+    
+    // Keywords for emotional states
+    const emotionalKeywords = {
+      anxiety: ['anxious', 'anxiety', 'worried', 'worry', 'nervous', 'panic', 'scared', 'fear', 'afraid'],
+      sadness: ['sad', 'depressed', 'down', 'lonely', 'hopeless', 'crying', 'tears', 'unhappy'],
+      anger: ['angry', 'mad', 'furious', 'frustrated', 'irritated', 'annoyed', 'rage'],
+      stress: ['stressed', 'overwhelmed', 'pressure', 'tension', 'strain', 'buried'],
+      tiredness: ['tired', 'exhausted', 'drained', 'weary', 'sleepy', 'fatigue'],
+      happiness: ['happy', 'joyful', 'excited', 'great', 'amazing', 'wonderful', 'fantastic', 'good'],
+      confusion: ['confused', 'lost', 'uncertain', 'doubt', 'unsure', 'unclear'],
+      gratitude: ['grateful', 'thankful', 'appreciate', 'blessed', 'lucky'],
+      calm: ['calm', 'peaceful', 'relaxed', 'serene', 'tranquil', 'chill']
+    };
+    
+    // Detect emotional state
+    let detectedEmotion = null;
+    for (const [emotion, keywords] of Object.entries(emotionalKeywords)) {
+      if (keywords.some(keyword => lowerMessage.includes(keyword))) {
+        detectedEmotion = emotion;
+        break;
       }
     }
-
-    // Default supportive response
-    return "Thank you for sharing that with me. It's important to acknowledge how you're feeling. Let me suggest some approaches that might help:\n\n1. **Breathing Exercise**: Try the 4-7-8 breathing technique - inhale for 4 counts, hold for 7, exhale for 8. Repeat 4 times.\n\n2. **Grounding**: Use the 5-4-3-2-1 technique - notice 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you can taste.\n\n3. **Self-compassion**: Remind yourself that it's okay to feel this way. You're human, and all emotions are valid.\n\nWould you like to explore any of these techniques further, or is there something specific I can help you with?";
+    
+    // Question detection
+    const isQuestion = lowerMessage.includes('?') || 
+                       lowerMessage.startsWith('how') || 
+                       lowerMessage.startsWith('what') || 
+                       lowerMessage.startsWith('why') || 
+                       lowerMessage.startsWith('when') || 
+                       lowerMessage.startsWith('where') ||
+                       lowerMessage.startsWith('can') ||
+                       lowerMessage.startsWith('should');
+    
+    // Greeting detection
+    const isGreeting = lowerMessage.includes('hello') || 
+                       lowerMessage.includes('hi') || 
+                       lowerMessage.includes('hey');
+    
+    // Request for help
+    const needsHelp = lowerMessage.includes('help') || 
+                      lowerMessage.includes('support') || 
+                      lowerMessage.includes('advice');
+    
+    // Techniques/coping
+    const asksAboutTechniques = lowerMessage.includes('technique') || 
+                                 lowerMessage.includes('exercise') || 
+                                 lowerMessage.includes('method') ||
+                                 lowerMessage.includes('what can i do');
+    
+    // Generate contextual responses
+    if (isGreeting) {
+      const greetings = [
+        "Hello! I'm here to support you. How are you feeling today?",
+        "Hi there! I'm glad you're here. What's on your mind?",
+        "Hey! I'm your Mindful Coach. How can I help you today?",
+        "Welcome! I'm here to listen and support you. What would you like to talk about?"
+      ];
+      return greetings[Math.floor(Math.random() * greetings.length)];
+    }
+    
+    if (asksAboutTechniques || lowerMessage.includes('breathing') || lowerMessage.includes('exercise')) {
+      return this.getTechniqueResponse();
+    }
+    
+    if (detectedEmotion === 'anxiety') {
+      return this.getAnxietyResponse();
+    }
+    
+    if (detectedEmotion === 'sadness') {
+      return this.getSadnessResponse();
+    }
+    
+    if (detectedEmotion === 'anger') {
+      return this.getAngerResponse();
+    }
+    
+    if (detectedEmotion === 'stress') {
+      return this.getStressResponse();
+    }
+    
+    if (detectedEmotion === 'tiredness') {
+      return this.getTirednessResponse();
+    }
+    
+    if (detectedEmotion === 'happiness') {
+      return this.getHappinessResponse();
+    }
+    
+    if (detectedEmotion === 'confusion') {
+      return this.getConfusionResponse();
+    }
+    
+    if (detectedEmotion === 'gratitude') {
+      return this.getGratitudeResponse();
+    }
+    
+    if (detectedEmotion === 'calm') {
+      return this.getCalmResponse();
+    }
+    
+    if (isQuestion) {
+      return this.getQuestionResponse(message);
+    }
+    
+    if (needsHelp) {
+      return "I'm here to help. Let me suggest some supportive strategies:\n\n🔹 **Breathing Exercises** - Try the 4-7-8 technique or box breathing to calm your nervous system.\n\n🔹 **Grounding Techniques** - Use the 5-4-3-2-1 method to anchor yourself in the present moment.\n\n🔹 **Movement** - Even gentle stretching or a short walk can shift your state.\n\n🔹 **Journaling** - Writing about your thoughts can provide clarity.\n\nWhat would you like to try first?";
+    }
+    
+    // General empathetic response
+    return this.getGeneralEmpatheticResponse();
+  }
+  
+  getAnxietyResponse() {
+    const responses = [
+      "I understand that anxiety can feel overwhelming. You're not alone in this. Let's try something practical: Take a deep breath in for 4 counts, hold for 4, breathe out for 4, and hold for 4. This box breathing can help regulate your nervous system. How does that feel?",
+      "Anxiety is your body's way of trying to protect you. One way to work with it is through grounding. Right now, can you notice 3 things around you that you can see? This simple act helps bring you back to the present. What do you notice?",
+      "I hear that anxiety is with you today. Let me ask - what's the most helpful thing someone has done for you when you felt anxious? Sometimes we know what we need. Can you practice a little of that now?"
+    ];
+    return responses[Math.floor(Math.random() * responses.length)];
+  }
+  
+  getSadnessResponse() {
+    const responses = [
+      "I'm sorry you're going through a hard time. It's okay to feel sad. Sometimes the most important thing is to just be gentle with yourself. Have you tried writing down how you feel? Sometimes putting thoughts on paper can make them feel less heavy.",
+      "Feeling sad is a natural response to difficulty. You don't have to push it away. One practice that might help is to name three things you're grateful for today - even very small things, like a warm cup of tea or a moment of quiet. What comes to mind?",
+      "Sadness is valid, and it's okay to feel this way. Sometimes simply acknowledging 'I'm sad right now' without trying to fix it can be the first step toward feeling better. What kind of support would feel helpful to you right now?"
+    ];
+    return responses[Math.floor(Math.random() * responses.length)];
+  }
+  
+  getAngerResponse() {
+    const responses = [
+      "Anger is telling you something important - maybe that a boundary was crossed or a need isn't met. Before acting on it, try this: Name 5 things you can see right now, 4 you can touch, 3 you hear, 2 you smell, and 1 you can taste. This grounding technique helps you pause.",
+      "Anger is energy. Let's channel it constructively. After you've taken some deep breaths, consider: What is this anger trying to protect? Understanding that can help you respond in a way that serves you better.",
+      "I hear the anger in your message. It's okay to feel this. The key is not to let it control you. Try going for a short walk or doing some physical movement - this can help move that energy through your body. How does that sound?"
+    ];
+    return responses[Math.floor(Math.random() * responses.length)];
+  }
+  
+  getStressResponse() {
+    const responses = [
+      "Stress happens when we feel the demands are greater than our resources. Let's pause and do the 4-7-8 breathing: Inhale for 4, hold for 7, exhale for 8. Repeat 4 times. This activates your body's relaxation response.",
+      "When stress piles up, try breaking things down. What's one small thing you can do right now that would make a difference? Sometimes focusing on one task at a time helps reduce that overwhelmed feeling.",
+      "Stress is a signal. It's saying 'slow down.' Can you take 2 minutes right now to just breathe and be present? Sometimes giving yourself permission to pause is exactly what you need."
+    ];
+    return responses[Math.floor(Math.random() * responses.length)];
+  }
+  
+  getTirednessResponse() {
+    const responses = [
+      "Feeling tired affects everything - your mood, your thinking, your energy. Consider doing some gentle movement or stretching. Even 5 minutes can boost your energy. Also, be compassionate with yourself - rest is productive too.",
+      "Tiredness isn't just about sleep - it can be emotional or mental exhaustion. What's one thing that usually helps you recharge? Is there a way you could honor that need today?",
+      "When you're tired, everything feels harder. Try the body scan technique: slowly notice each part of your body from toes to head. This can be done lying down and often helps both wake you up and relax you."
+    ];
+    return responses[Math.floor(Math.random() * responses.length)];
+  }
+  
+  getHappinessResponse() {
+    const responses = [
+      "That's wonderful! It's great to hear you're feeling good. When we're in a positive state, it's a perfect time to build positive habits. What made you feel this way today? And how might you extend this feeling?",
+      "Feeling happy is beautiful! Consider savoring this moment - really notice what it feels like in your body, what you're thinking, what you're grateful for. These positive states are powerful for building resilience.",
+      "So glad you're feeling good! When we're feeling positive, it can be helpful to journal about what contributed to this. Understanding what creates joy for us helps us cultivate more of it. What brought you joy today?"
+    ];
+    return responses[Math.floor(Math.random() * responses.length)];
+  }
+  
+  getConfusionResponse() {
+    const responses = [
+      "It's okay to feel confused. Sometimes our minds need time to process. Try the RAIN technique: Recognize what you're feeling, Allow it to be there, Investigate it with curiosity, and Nurture yourself with self-compassion. What's the confusion about?",
+      "Confusion isn't a sign of weakness - sometimes it means you're stretching yourself. Can you name one thing about your situation that you're clear on? Sometimes finding the edge of clarity helps.",
+      "It's natural to feel confused when facing uncertainty. Instead of trying to figure it all out at once, what's the first small thing you could understand or decide? Breaking it down helps."
+    ];
+    return responses[Math.floor(Math.random() * responses.length)];
+  }
+  
+  getGratitudeResponse() {
+    const responses = [
+      "Gratitude is powerful! Research shows that practicing gratitude regularly can boost your overall well-being. Have you ever tried a gratitude letter - writing to someone who's impacted you? It benefits both you and them.",
+      "I love that you're feeling grateful. When gratitude is present, it often helps other positive emotions grow. What else feels good in your life right now? Sometimes gratitude opens the door to more joy.",
+      "Gratitude strengthens the good! Consider making this a practice - at the end of each day, name three things you're grateful for. Not just big things - sometimes the simple, everyday moments matter most."
+    ];
+    return responses[Math.floor(Math.random() * responses.length)];
+  }
+  
+  getCalmResponse() {
+    const responses = [
+      "I'm glad you're feeling calm - that's a wonderful state to be in. This peaceful moment is perfect for reflection or setting intentions. How are you using this calm energy today?",
+      "Calm is a gift. When you're in this peaceful state, it's a good time to plan or create. What's something meaningful you'd like to focus on? Or perhaps just enjoy the calm itself.",
+      "Feeling calm is such a good foundation for well-being. You might use this state to do something for future you - plan, create, or invest in your growth. Or simply be present with this tranquility."
+    ];
+    return responses[Math.floor(Math.random() * responses.length)];
+  }
+  
+  getTechniqueResponse() {
+    const techniques = [
+      "Here are some helpful techniques you can try:\n\n**Box Breathing**: Inhale 4, hold 4, exhale 4, hold 4. This regulates your nervous system.\n\n**5-4-3-2-1 Grounding**: Notice 5 things you see, 4 you can touch, 3 hear, 2 smell, 1 taste.\n\n**4-7-8 Breathing**: Inhale 4, hold 7, exhale 8. Very calming.\n\nWhich would you like to explore?",
+      "Let me share some proven techniques:\n\n**Progressive Muscle Relaxation**: Tense then release each muscle group from toes to head.\n\n**Loving-Kindness**: Send yourself and others thoughts of wellbeing.\n\n**Body Scan**: Mindfully notice each part of your body, head to toe.\n\nWhat feels most appealing to you?",
+      "Here are some effective techniques:\n\n**STOP Method**: Stop, Take a breath, Observe your experience, Proceed with intention.\n\n**Square Breathing**: Visualize drawing a square while you breathe - in (up), hold (across), out (down), hold (across).\n\nWhat resonates with you?"
+    ];
+    return techniques[Math.floor(Math.random() * techniques.length)];
+  }
+  
+  getQuestionResponse(message) {
+    const questions = [
+      "That's a thoughtful question. Let me address that - would it help to explore this from a few different angles? What specifically are you curious about?",
+      "I appreciate your question. To give you the most helpful response, can you tell me more about what led you to ask this? Context helps me support you better.",
+      "That's a valid question. Sometimes the best approach is to explore it together. What's your sense of the answer? Sometimes we already know what we need - it's just about trusting ourselves."
+    ];
+    return questions[Math.floor(Math.random() * questions.length)];
+  }
+  
+  getGeneralEmpatheticResponse() {
+    const responses = [
+      "Thank you for sharing that with me. It takes courage to open up. What would be most helpful for you right now - a practical technique, some reflection, or just being heard?",
+      "I hear you. Your experience matters. How has this been affecting your daily life? Sometimes understanding the impact helps us choose the best support.",
+      "Thank you for trusting me with this. What's something that usually helps when you're going through this? Let's build on what works for you.",
+      "I appreciate you sharing. Let's talk about what you need most right now. Are you looking for coping strategies, emotional validation, or something else?",
+      "That sounds challenging. One helpful approach is to ask: Is there something specific that would feel supportive right now? Sometimes naming what we need is the first step to getting it."
+    ];
+    return responses[Math.floor(Math.random() * responses.length)];
   }
 
   addMessage(content, sender) {
