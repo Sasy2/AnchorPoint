@@ -1,7 +1,7 @@
 {
-  "name": "mental-health-coach-backend",
+  "name": "anchorpoint",
   "version": "1.0.0",
-  "description": "Backend API for Mental Health Coach application",
+  "description": "AnchorPoint - Mental Health Coach App with AI integration",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

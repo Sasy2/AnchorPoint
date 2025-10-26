@@ -1,4 +1,4 @@
-# Mental Health Coach App - Full Stack Application
+# AnchorPoint - Mental Health Coach App
 
 A comprehensive mental health support application with backend API, AI chatbot integration, and mobile-responsive design.
 

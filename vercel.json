@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "mental-health-coach-app",
+  "name": "anchorpoint",
   "builds": [
     {
       "src": "server.js",
