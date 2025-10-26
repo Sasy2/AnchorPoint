@@ -658,10 +658,14 @@ const initializeSampleData = async () => {
   }
 };
 
-// Start server
-app.listen(PORT, async () => {
-  console.log(`Server running on port ${PORT}`);
-  await initializeSampleData();
-});
-
-module.exports = app;
+// For Vercel serverless deployment
+if (process.env.VERCEL || process.env.NODE_ENV === 'production') {
+  // For Vercel, don't use app.listen()
+  module.exports = app;
+} else {
+  // For local development, start the server normally
+  app.listen(PORT, async () => {
+    console.log(`Server running on port ${PORT}`);
+    await initializeSampleData();
+  });
+}
