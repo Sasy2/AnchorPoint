@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>AI Mental Health Coach</title>
+<title>AnchorPoint - Mindful Coach</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
@@ -59,10 +59,12 @@
 <div class="flex h-full flex-col justify-between">
 <div class="flex flex-col gap-4">
 <div class="flex items-center gap-3">
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="AI Coach Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGThubcJTcbKFox870ow6d2mLNSj6ZOwxyP0I0mcdwSfeO3QwepCy-W5ozZbclOUp7YHDaVY8euFAcKCAJwcmMZhd5s2HsmWDUBPou6KI7o0fpz-A9jvzRoZdaxlm9UjzDO6WClAM1qY9M49-qBPPNFyOgV-xUxYdAXdjicGwKqNolvXK9ls_CrJR_ddf8DIxmwKmwVT5hbks7AEFcOBSJ2-mKZpxvkzspHQ8aq67RjEtMVK1q7AAH6ipQU7UgpxHsgSoLScGLnQ1J");'></div>
+<div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary">psychology</span>
+</div>
 <div class="flex flex-col">
-<h1 class="text-base font-medium leading-normal text-[#111318] dark:text-white">AI Mental Health Coach</h1>
-<p class="text-sm font-normal leading-normal text-[#616f89] dark:text-gray-400">Your supportive companion</p>
+<h1 class="text-base font-medium leading-normal text-[#111318] dark:text-white">Mindful Coach</h1>
+<p class="text-sm font-normal leading-normal text-[#616f89] dark:text-gray-400">Your AI companion</p>
 </div>
 </div>
 <nav class="mt-4 flex flex-col gap-2">
@@ -76,11 +78,7 @@
 </a>
 <a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary dark:bg-primary/30 dark:text-primary" href="chatbot.html">
 <span class="material-symbols-outlined !fill-1">psychology</span>
-<p class="text-sm font-medium leading-normal">AI Coach</p>
-</a>
-<a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors" href="community.html">
-<span class="material-symbols-outlined text-[#111318] dark:text-gray-300">groups</span>
-<p class="text-sm font-medium leading-normal text-[#111318] dark:text-gray-300">Community</p>
+<p class="text-sm font-medium leading-normal">Mindful Coach</p>
 </a>
 </nav>
 </div>
@@ -103,7 +101,7 @@
 <span class="material-symbols-outlined text-primary">psychology</span>
 </div>
 <div>
-<h1 class="text-lg font-bold text-[#111318] dark:text-white">AI Mental Health Coach</h1>
+<h1 class="text-lg font-bold text-[#111318] dark:text-white">Mindful Coach</h1>
 <p class="text-sm text-[#616f89] dark:text-gray-400">I'm here to support you on your mental health journey</p>
 </div>
 </div>
@@ -124,7 +122,7 @@ Online
 <span class="material-symbols-outlined text-primary text-sm">psychology</span>
 </div>
 <div class="bg-white dark:bg-gray-800 rounded-lg p-3 max-w-md">
-<p class="text-sm text-[#111318] dark:text-white">Hello! I'm your AI Mental Health Coach. I'm here to provide supportive guidance and help you navigate your mental health journey. How are you feeling today?</p>
+<p class="text-sm text-[#111318] dark:text-white">Hello! I'm your Mindful Coach. I'm here to provide supportive guidance and help you navigate your mental health journey. How are you feeling today?</p>
 <p class="text-xs text-[#616f89] dark:text-gray-400 mt-1">Just now</p>
 </div>
 </div>
@@ -146,10 +144,6 @@ Online
 <span class="material-symbols-outlined text-sm">mood</span>
 Suggestions
 </button>
-<button class="flex items-center gap-1 text-xs text-[#616f89] dark:text-gray-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-sm">help</span>
-Help
-</button>
 </div>
 <p class="text-xs text-[#616f89] dark:text-gray-400">Remember: I'm an AI assistant, not a replacement for professional therapy</p>
 </div>
@@ -157,40 +151,13 @@ Help
 </main>
 </div>
 
-<!-- Quick Suggestions Modal -->
-<div id="suggestions-modal" class="fixed inset-0 bg-black/50 hidden z-50 flex items-center justify-center p-4">
-<div class="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md w-full">
-<h3 class="text-lg font-bold text-[#111318] dark:text-white mb-4">Quick Suggestions</h3>
-<div class="space-y-2">
-<button class="suggestion-btn w-full text-left p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors" data-suggestion="I'm feeling anxious today">
-<span class="text-sm text-[#111318] dark:text-white">I'm feeling anxious today</span>
-</button>
-<button class="suggestion-btn w-full text-left p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors" data-suggestion="I need help with stress management">
-<span class="text-sm text-[#111318] dark:text-white">I need help with stress management</span>
-</button>
-<button class="suggestion-btn w-full text-left p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors" data-suggestion="I want to improve my mood">
-<span class="text-sm text-[#111318] dark:text-white">I want to improve my mood</span>
-</button>
-<button class="suggestion-btn w-full text-left p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors" data-suggestion="I'm having trouble sleeping">
-<span class="text-sm text-[#111318] dark:text-white">I'm having trouble sleeping</span>
-</button>
-</div>
-<div class="flex justify-end gap-2 mt-4">
-<button id="close-suggestions" class="px-4 py-2 text-sm text-[#616f89] dark:text-gray-400 hover:text-[#111318] dark:hover:text-white transition-colors">Cancel</button>
-</div>
-</div>
-</div>
-
-<script src="js/api.js"></script>
 <script>
 class Chatbot {
   constructor() {
     this.messageInput = document.getElementById('message-input');
     this.sendBtn = document.getElementById('send-btn');
     this.chatMessages = document.getElementById('chat-messages');
-    this.suggestionsModal = document.getElementById('suggestions-modal');
     this.clearChatBtn = document.getElementById('clear-chat-btn');
-    this.connectionStatus = document.getElementById('connection-status');
     
     this.isTyping = false;
     this.init();
@@ -198,7 +165,6 @@ class Chatbot {
 
   init() {
     this.setupEventListeners();
-    this.loadChatHistory();
   }
 
   setupEventListeners() {
@@ -209,24 +175,6 @@ class Chatbot {
         e.preventDefault();
         this.sendMessage();
       }
-    });
-
-    // Suggestions
-    document.querySelector('[data-suggestion]')?.parentElement.addEventListener('click', () => {
-      this.suggestionsModal.classList.remove('hidden');
-    });
-
-    document.querySelectorAll('.suggestion-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const suggestion = e.currentTarget.getAttribute('data-suggestion');
-        this.messageInput.value = suggestion;
-        this.suggestionsModal.classList.add('hidden');
-        this.messageInput.focus();
-      });
-    });
-
-    document.getElementById('close-suggestions')?.addEventListener('click', () => {
-      this.suggestionsModal.classList.add('hidden');
     });
 
     // Clear chat
@@ -251,21 +199,37 @@ class Chatbot {
     // Show typing indicator
     this.showTypingIndicator();
 
-    try {
-      // Send to AI
-      const response = await api.sendChatMessage(message);
-      
-      // Remove typing indicator
+    // Simulate AI response with timeout
+    setTimeout(() => {
       this.hideTypingIndicator();
-      
-      // Add AI response
-      this.addMessage(response.message, 'assistant');
-      
-    } catch (error) {
-      this.hideTypingIndicator();
-      this.addMessage("I'm sorry, I'm having trouble processing your request right now. Please try again later.", 'assistant');
-      console.error('Chat error:', error);
+      const response = this.generateAIResponse(message);
+      this.addMessage(response, 'assistant');
+    }, 1000 + Math.random() * 2000);
+  }
+
+  generateAIResponse(message) {
+    const responses = {
+      'anxious': "I understand that anxiety can feel overwhelming. Let's try some calming breathing exercises. Take a deep breath in for 4 counts, hold for 4 counts, breathe out for 4 counts, and hold for 4 counts. This is called box breathing and can help calm your nervous system.",
+      'sad': "I'm sorry you're feeling sad. It's okay to feel this way sometimes. Consider trying the 'Three Good Things' exercise - write down three things that went well today, no matter how small. This practice can help shift your perspective.",
+      'angry': "Anger is a valid emotion. Let's channel it constructively. Try the 5-4-3-2-1 grounding technique: Name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, and 1 you can taste. This helps bring you back to the present moment.",
+      'tired': "Feeling tired can affect your mental health. Consider doing some gentle movement or stretching. Even 5 minutes of movement can boost your energy. Also, try the body scan meditation - slowly scan your body from head to toe, noticing sensations.",
+      'happy': "That's wonderful to hear! When we're feeling good, it's a great time to build positive habits. Consider journaling about what made you feel this way, or share your joy with someone close to you.",
+      'confused': "It's okay to feel confused. Sometimes our minds need time to process. Try the RAIN technique: Recognize what you're feeling, Allow it to be there, Investigate it with curiosity, and Nurture yourself with self-compassion.",
+      'excited': "Excitement is great energy! Harness it by setting an intention for today. What would you like to achieve with this energy? Consider channeling it into a creative activity or something meaningful to you.",
+      'grateful': "Gratitude is powerful! Consider creating a gratitude list or letter. Research shows that expressing gratitude regularly can boost your overall well-being.",
+      'calm': "I'm glad you're feeling calm. This is a wonderful state for reflection and planning. Consider using this peaceful moment to set intentions for your day or engage in mindful activities."
+    };
+
+    // Check for keyword matches
+    const lowerMessage = message.toLowerCase();
+    for (const [key, response] of Object.entries(responses)) {
+      if (lowerMessage.includes(key)) {
+        return response;
+      }
     }
+
+    // Default supportive response
+    return "Thank you for sharing that with me. It's important to acknowledge how you're feeling. Let me suggest some approaches that might help:\n\n1. **Breathing Exercise**: Try the 4-7-8 breathing technique - inhale for 4 counts, hold for 7, exhale for 8. Repeat 4 times.\n\n2. **Grounding**: Use the 5-4-3-2-1 technique - notice 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you can taste.\n\n3. **Self-compassion**: Remind yourself that it's okay to feel this way. You're human, and all emotions are valid.\n\nWould you like to explore any of these techniques further, or is there something specific I can help you with?";
   }
 
   addMessage(content, sender) {
@@ -333,42 +297,11 @@ class Chatbot {
     }
   }
 
-  async loadChatHistory() {
-    try {
-      const messages = await api.getChatHistory();
-      
-      // Clear existing messages except welcome message
+  async clearChat() {
+    if (confirm('Are you sure you want to clear the chat history?')) {
       const welcomeMessage = this.chatMessages.querySelector('.chat-message');
       this.chatMessages.innerHTML = '';
       this.chatMessages.appendChild(welcomeMessage);
-      
-      // Add chat history
-      messages.forEach(msg => {
-        if (msg.role !== 'system') {
-          this.addMessage(msg.content, msg.role);
-        }
-      });
-      
-    } catch (error) {
-      console.error('Error loading chat history:', error);
-    }
-  }
-
-  async clearChat() {
-    if (confirm('Are you sure you want to clear the chat history?')) {
-      try {
-        // Clear local chat display
-        const welcomeMessage = this.chatMessages.querySelector('.chat-message');
-        this.chatMessages.innerHTML = '';
-        this.chatMessages.appendChild(welcomeMessage);
-        
-        // Note: In a real implementation, you'd also clear the server-side chat history
-        utils.showNotification('Chat cleared successfully', 'success');
-        
-      } catch (error) {
-        console.error('Error clearing chat:', error);
-        utils.showNotification('Error clearing chat', 'error');
-      }
     }
   }
 
@@ -387,22 +320,13 @@ class Chatbot {
   }
 
   formatAIResponse(text) {
-    // Format AI response with better line breaks and emphasis
-    return text
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/\n/g, '<br>');
+    // Format AI response with better line breaks
+    return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
   }
 }
 
 // Initialize chatbot when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  // Check authentication
-  if (!auth.isAuthenticated()) {
-    window.location.href = 'index.html';
-    return;
-  }
-
   // Initialize chatbot
   new Chatbot();
   
