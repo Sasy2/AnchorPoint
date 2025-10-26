@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mental Health Coach - Activities</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#427cf0",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-[#111318] dark:text-gray-200">
+<div class="relative flex min-h-screen w-full">
+<!-- Side Navigation -->
+<aside class="flex h-screen w-64 flex-col border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark p-4 sticky top-0">
+<div class="flex h-full flex-col justify-between">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="A profile picture of a person named Alex Chen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGThubcJTcbKFox870ow6d2mLNSj6ZOwxyP0I0mcdwSfeO3QwepCy-W5ozZbclOUp7YHDaVY8euFAcKCAJwcmMZhd5s2HsmWDUBPou6KI7o0fpz-A9jvzRoZdaxlm9UjzDO6WClAM1qY9M49-qBPPNFyOgV-xUxYdAXdjicGwKqNolvXK9ls_CrJR_ddf8DIxmwKmwVT5hbks7AEFcOBSJ2-mKZpxvkzspHQ8aq67RjEtMVK1q7AAH6ipQU7UgpxHsgSoLScGLnQ1J");'></div>
+<div class="flex flex-col">
+<h1 class="text-base font-medium leading-normal text-[#111318] dark:text-white">Alex Chen</h1>
+<p class="text-sm font-normal leading-normal text-[#616f89] dark:text-gray-400">alex.chen@email.com</p>
+</div>
+</div>
+<nav class="mt-4 flex flex-col gap-2">
+<a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors" href="index.html">
+<span class="material-symbols-outlined text-[#111318] dark:text-gray-300">home</span>
+<p class="text-sm font-medium leading-normal text-[#111318] dark:text-gray-300">Home</p>
+</a>
+<a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors" href="progress.html">
+<span class="material-symbols-outlined text-[#111318] dark:text-gray-300">trending_up</span>
+<p class="text-sm font-medium leading-normal text-[#111318] dark:text-gray-300">My Journey</p>
+</a>
+<a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary dark:bg-primary/30 dark:text-primary" href="activities.html">
+<span class="material-symbols-outlined !fill-1">grass</span>
+<p class="text-sm font-medium leading-normal">Activities</p>
+</a>
+<a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors" href="library.html">
+<span class="material-symbols-outlined text-[#111318] dark:text-gray-300">book</span>
+<p class="text-sm font-medium leading-normal text-[#111318] dark:text-gray-300">Resources</p>
+</a>
+<a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors" href="notifications.html">
+<span class="material-symbols-outlined text-[#111318] dark:text-gray-300">settings</span>
+<p class="text-sm font-medium leading-normal text-[#111318] dark:text-gray-300">Settings</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-1">
+<a class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-[#111318] dark:text-gray-300">help_center</span>
+<p class="text-sm font-medium leading-normal text-[#111318] dark:text-gray-300">Help & Support</p>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-8">
+<div class="mx-auto max-w-4xl">
+<!-- Page Heading -->
+<div class="flex flex-col gap-3 mb-8">
+<h1 class="text-[#111318] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">You're feeling <span id="mood-display">anxious</span>. Let's find something that can help.</h1>
+<p class="text-[#616f89] dark:text-gray-400 text-base font-normal leading-normal">Here are a few activities that might help you find calm and clarity.</p>
+</div>
+<!-- Activities List -->
+<div class="flex flex-col gap-4">
+<!-- List Item: Breathing Exercises -->
+<div class="flex items-center gap-4 bg-white dark:bg-background-dark dark:border dark:border-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="flex items-center gap-4 flex-1">
+<div class="text-[#111318] dark:text-primary flex items-center justify-center rounded-lg bg-primary/20 dark:bg-primary/30 shrink-0 size-12">
+<span class="material-symbols-outlined">self_improvement</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-[#111318] dark:text-white text-base font-medium leading-normal line-clamp-1">Breathing Exercises</p>
+<p class="text-[#616f89] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Find your center with guided breathing techniques to calm your mind and body.</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="activity-btn flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-medium leading-normal hover:bg-primary/90 transition-colors" data-activity="breathing">
+<span class="truncate">Start Exercise</span>
+</button>
+</div>
+</div>
+<!-- List Item: Guided Journaling -->
+<div class="flex items-center gap-4 bg-white dark:bg-background-dark dark:border dark:border-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="flex items-center gap-4 flex-1">
+<div class="text-[#111318] dark:text-primary flex items-center justify-center rounded-lg bg-primary/20 dark:bg-primary/30 shrink-0 size-12">
+<span class="material-symbols-outlined">edit_note</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-[#111318] dark:text-white text-base font-medium leading-normal line-clamp-1">Guided Journaling</p>
+<p class="text-[#616f89] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Explore your thoughts and feelings with structured writing prompts.</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="activity-btn flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-medium leading-normal hover:bg-primary/90 transition-colors" data-activity="journaling">
+<span class="truncate">Begin Journaling</span>
+</button>
+</div>
+</div>
+<!-- List Item: Relaxation Techniques -->
+<div class="flex items-center gap-4 bg-white dark:bg-background-dark dark:border dark:border-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="flex items-center gap-4 flex-1">
+<div class="text-[#111318] dark:text-primary flex items-center justify-center rounded-lg bg-primary/20 dark:bg-primary/30 shrink-0 size-12">
+<span class="material-symbols-outlined">spa</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-[#111318] dark:text-white text-base font-medium leading-normal line-clamp-1">Relaxation Techniques</p>
+<p class="text-[#616f89] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Gently release tension from your body with progressive muscle relaxation.</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="activity-btn flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-medium leading-normal hover:bg-primary/90 transition-colors" data-activity="relaxation">
+<span class="truncate">Start Relaxing</span>
+</button>
+</div>
+</div>
+<!-- List Item: Mindful Meditation -->
+<div class="flex items-center gap-4 bg-white dark:bg-background-dark dark:border dark:border-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="flex items-center gap-4 flex-1">
+<div class="text-[#111318] dark:text-primary flex items-center justify-center rounded-lg bg-primary/20 dark:bg-primary/30 shrink-0 size-12">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-[#111318] dark:text-white text-base font-medium leading-normal line-clamp-1">Mindful Meditation</p>
+<p class="text-[#616f89] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">Focus on the present moment to reduce stress and increase awareness.</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="activity-btn flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-medium leading-normal hover:bg-primary/90 transition-colors" data-activity="meditation">
+<span class="truncate">Begin Meditating</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body>
+
+<script src="js/api.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async function() {
+    // Check authentication
+    if (!await auth.checkAuth()) {
+        window.location.href = 'index.html';
+        return;
+    }
+    
+    // Display the selected mood
+    const selectedMood = localStorage.getItem('selectedMood');
+    const moodDisplay = document.getElementById('mood-display');
+    
+    if (selectedMood && moodDisplay) {
+        const moodTexts = {
+            'sad': 'sad',
+            'angry': 'angry', 
+            'energized': 'energized',
+            'bored': 'bored'
+        };
+        moodDisplay.textContent = moodTexts[selectedMood] || 'anxious';
+    }
+    
+    // Load activities from backend
+    await loadActivities();
+    
+    // Activity button functionality
+    const activityButtons = document.querySelectorAll('.activity-btn');
+    
+    activityButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const activity = this.getAttribute('data-activity');
+            
+            // Store the selected activity
+            localStorage.setItem('selectedActivity', activity);
+            
+            // Navigate based on activity type
+            if (activity === 'breathing') {
+                window.location.href = 'breathing.html';
+            } else if (activity === 'journaling') {
+                window.location.href = 'progress.html';
+            } else if (activity === 'relaxation') {
+                window.location.href = 'library.html';
+            } else if (activity === 'meditation') {
+                window.location.href = 'library.html';
+            }
+        });
+    });
+    
+    // Navigation highlighting
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+            link.classList.add('bg-primary/20', 'text-primary', 'dark:bg-primary/30', 'dark:text-primary');
+            link.classList.remove('hover:bg-primary/10', 'dark:hover:bg-primary/20');
+        }
+    });
+    
+    // Dark mode functionality
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.documentElement.classList.add('dark');
+    }
+});
+
+async function loadActivities() {
+    try {
+        const activities = await api.getActivities();
+        
+        // Update activities list
+        const activitiesContainer = document.querySelector('.flex.flex-col.gap-4');
+        if (activitiesContainer && activities.length > 0) {
+            activitiesContainer.innerHTML = activities.slice(0, 4).map(activity => `
+                <div class="flex items-center gap-4 bg-white dark:bg-background-dark dark:border dark:border-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex items-center gap-4 flex-1">
+                        <div class="text-[#111318] dark:text-primary flex items-center justify-center rounded-lg bg-primary/20 dark:bg-primary/30 shrink-0 size-12">
+                            <span class="material-symbols-outlined">${getActivityIcon(activity.category)}</span>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <p class="text-[#111318] dark:text-white text-base font-medium leading-normal line-clamp-1">${activity.title}</p>
+                            <p class="text-[#616f89] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">${activity.description}</p>
+                        </div>
+                    </div>
+                    <div class="shrink-0">
+                        <button class="activity-btn flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-medium leading-normal hover:bg-primary/90 transition-colors" data-activity="${activity._id}">
+                            <span class="truncate">Start Exercise</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Re-add event listeners for new buttons
+            activitiesContainer.querySelectorAll('.activity-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const activityId = this.getAttribute('data-activity');
+                    localStorage.setItem('selectedActivity', activityId);
+                    
+                    // Navigate to appropriate page based on activity category
+                    const activity = activities.find(a => a._id === activityId);
+                    if (activity) {
+                        if (activity.category === 'breathing') {
+                            window.location.href = 'breathing.html';
+                        } else {
+                            window.location.href = 'progress.html';
+                        }
+                    }
+                });
+            });
+        }
+    } catch (error) {
+        console.error('Error loading activities:', error);
+        utils.showNotification('Error loading activities', 'error');
+    }
+}
+
+function getActivityIcon(category) {
+    const icons = {
+        'breathing': 'self_improvement',
+        'mindfulness': 'psychology',
+        'gratitude': 'favorite',
+        'movement': 'directions_run',
+        'journaling': 'edit_note',
+        'relaxation': 'spa'
+    };
+    return icons[category] || 'self_improvement';
+}
+</script>
+</html>

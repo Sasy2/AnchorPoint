@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gentle Reminders & Notifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .icon-fill {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#43efef",
+              "background-light": "#f6f8f8",
+              "background-dark": "#102222",
+              "custom-teal": "#76C7C0",
+              "custom-lavender": "#B1A2CF",
+              "custom-off-white": "#F8F9FA",
+              "custom-light-grey": "#E9ECEF",
+              "custom-dark-grey": "#495057",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex min-h-screen w-full">
+<!-- SideNavBar -->
+<aside class="flex flex-col w-64 bg-white dark:bg-black/20 p-4 border-r border-custom-light-grey dark:border-white/10 shrink-0">
+<div class="flex flex-col justify-between h-full">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture of Maria Garcia" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCQfi9gX_LayK3qVfukcEm-UXnARdFJ_0n_t1_46njcWHUddq6DUyfo4TRSElHkrXyW-7r92sJ--xCQgrVfpQBksk_k9HSrD8yLapiIYiABOeiibRk5i1SILvzIZ8EVQtPoYv-qWRacItztnCBCslKGdyp3nnWoFPUilRN7lpwPBRX0tYyFQzqgOl5Ya8tDhsXRJA72r85c2vkiPMvVZfbwGJsJkoO5MmnhAqZMyJVuD_cZznZ--wAeHlLuM-gy-5q2Cnlk5aiFkX1r");'></div>
+<div class="flex flex-col">
+<h1 class="text-custom-dark-grey dark:text-custom-off-white text-base font-medium leading-normal">Maria Garcia</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Mental Health Coach</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-custom-dark-grey dark:text-custom-off-white hover:bg-custom-light-grey dark:hover:bg-white/10 rounded-lg" href="index.html">
+<span class="material-symbols-outlined text-custom-dark-grey dark:text-custom-off-white">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-custom-dark-grey dark:text-custom-off-white hover:bg-custom-light-grey dark:hover:bg-white/10 rounded-lg" href="activities.html">
+<span class="material-symbols-outlined text-custom-dark-grey dark:text-custom-off-white">local_activity</span>
+<p class="text-sm font-medium leading-normal">Activities</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-custom-dark-grey dark:text-custom-off-white hover:bg-custom-light-grey dark:hover:bg-white/10 rounded-lg" href="progress.html">
+<span class="material-symbols-outlined text-custom-dark-grey dark:text-custom-off-white">trending_up</span>
+<p class="text-sm font-medium leading-normal">Progress</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-custom-dark-grey dark:text-custom-off-white hover:bg-custom-light-grey dark:hover:bg-white/10 rounded-lg" href="community.html">
+<span class="material-symbols-outlined text-custom-dark-grey dark:text-custom-off-white">book</span>
+<p class="text-sm font-medium leading-normal">Journal</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-custom-teal/20 dark:bg-custom-teal/30" href="notifications.html">
+<span class="material-symbols-outlined text-custom-dark-grey dark:text-custom-off-white icon-fill">settings</span>
+<p class="text-custom-dark-grey dark:text-custom-off-white text-sm font-medium leading-normal">Settings</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-custom-dark-grey dark:text-custom-off-white hover:bg-custom-light-grey dark:hover:bg-white/10 rounded-lg" href="#">
+<span class="material-symbols-outlined text-custom-dark-grey dark:text-custom-off-white">help</span>
+<p class="text-sm font-medium leading-normal">Support</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-custom-dark-grey dark:text-custom-off-white hover:bg-custom-light-grey dark:hover:bg-white/10 rounded-lg" href="#">
+<span class="material-symbols-outlined text-custom-dark-grey dark:text-custom-off-white">logout</span>
+<p class="text-sm font-medium leading-normal">Log Out</p>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="max-w-7xl mx-auto">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 mb-4">
+<a class="text-gray-500 dark:text-gray-400 text-base font-medium leading-normal" href="index.html">Dashboard</a>
+<span class="text-gray-500 dark:text-gray-400 text-base font-medium leading-normal">/</span>
+<a class="text-gray-500 dark:text-gray-400 text-base font-medium leading-normal" href="notifications.html">Settings</a>
+<span class="text-gray-500 dark:text-gray-400 text-base font-medium leading-normal">/</span>
+<span class="text-custom-dark-grey dark:text-custom-off-white text-base font-medium leading-normal">Notifications</span>
+</div>
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-3 mb-8">
+<p class="text-custom-dark-grey dark:text-custom-off-white text-4xl font-black leading-tight tracking-[-0.033em]">Gentle Reminders & Notifications</p>
+<button class="bg-custom-teal text-white px-6 py-3 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-opacity-90 transition-colors" onclick="createNewReminder()">
+<span class="material-symbols-outlined">add</span>
+                        Create New Reminder
+                    </button>
+</div>
+<!-- Two-column layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Settings -->
+<div class="lg:col-span-1 flex flex-col gap-6">
+<div class="bg-white dark:bg-black/20 p-6 rounded-xl border border-custom-light-grey dark:border-white/10">
+<h2 class="text-custom-dark-grey dark:text-custom-off-white text-lg font-bold leading-tight mb-4">Master Control</h2>
+<div class="flex items-center gap-4 justify-between">
+<div class="flex flex-col justify-center">
+<p class="text-custom-dark-grey dark:text-custom-off-white text-base font-medium leading-normal">Allow Notifications</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Enable or disable all app notifications</p>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-custom-light-grey dark:bg-white/20 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-custom-teal">
+<div class="h-full w-[27px] rounded-full bg-white" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;"></div>
+<input id="master-toggle" checked="" class="invisible absolute" type="checkbox" onchange="toggleMasterNotifications()"/>
+</label>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-black/20 p-6 rounded-xl border border-custom-light-grey dark:border-white/10">
+<h2 class="text-custom-dark-grey dark:text-custom-off-white text-lg font-bold leading-tight mb-4">Reminder Preferences</h2>
+<div class="space-y-4">
+<!-- Daily Check-ins -->
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<p class="text-custom-dark-grey dark:text-custom-off-white text-base font-medium">Daily Check-ins</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm">Every day at 9:00 AM</p>
+</div>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-custom-light-grey dark:bg-white/20 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-custom-teal">
+<div class="h-full w-[27px] rounded-full bg-white" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;"></div>
+<input id="daily-checkins" checked="" class="invisible absolute" type="checkbox" onchange="updateReminderSetting('daily-checkins', this.checked)"/>
+</label>
+</div>
+<hr class="border-custom-light-grey dark:border-white/10"/>
+<!-- Activity Prompts -->
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<p class="text-custom-dark-grey dark:text-custom-off-white text-base font-medium">Activity Prompts</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm">3 times a week</p>
+</div>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-custom-light-grey dark:bg-white/20 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-custom-teal">
+<div class="h-full w-[27px] rounded-full bg-white" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;"></div>
+<input id="activity-prompts" class="invisible absolute" type="checkbox" onchange="updateReminderSetting('activity-prompts', this.checked)"/>
+</label>
+</div>
+<hr class="border-custom-light-grey dark:border-white/10"/>
+<!-- Mindfulness Moments -->
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<p class="text-custom-dark-grey dark:text-custom-off-white text-base font-medium">Mindfulness Moments</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm">Daily at 1:00 PM</p>
+</div>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-custom-light-grey dark:bg-white/20 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-custom-teal">
+<div class="h-full w-[27px] rounded-full bg-white" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;"></div>
+<input id="mindfulness-moments" checked="" class="invisible absolute" type="checkbox" onchange="updateReminderSetting('mindfulness-moments', this.checked)"/>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: History -->
+<div class="lg:col-span-2 bg-white dark:bg-black/20 p-6 rounded-xl border border-custom-light-grey dark:border-white/10">
+<div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+<h2 class="text-custom-dark-grey dark:text-custom-off-white text-lg font-bold leading-tight">Your Recent Notifications</h2>
+<div class="relative min-w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+<input id="notification-search" class="w-full pl-10 pr-4 py-2 bg-custom-off-white dark:bg-white/10 border border-custom-light-grey dark:border-white/20 rounded-lg text-sm text-custom-dark-grey dark:text-custom-off-white placeholder:text-gray-400 focus:ring-2 focus:ring-custom-teal focus:border-transparent" placeholder="Search notifications..." type="text"/>
+</div>
+</div>
+<div id="notifications-list" class="flex flex-col gap-2">
+<!-- Notification Items -->
+<div class="notification-item flex items-center gap-4 bg-transparent p-4 min-h-[72px] justify-between border-b border-custom-light-grey dark:border-white/10">
+<div class="flex items-center gap-4">
+<div class="text-custom-lavender flex items-center justify-center rounded-lg bg-custom-lavender/20 shrink-0 size-12">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-custom-dark-grey dark:text-custom-off-white text-base font-medium leading-normal">Mood Check-in</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">How are you feeling today?</p>
+</div>
+</div>
+<p class="text-gray-400 dark:text-gray-500 text-xs font-medium shrink-0">Today, 9:01 AM</p>
+</div>
+<div class="notification-item flex items-center gap-4 bg-transparent p-4 min-h-[72px] justify-between border-b border-custom-light-grey dark:border-white/10">
+<div class="flex items-center gap-4">
+<div class="text-custom-teal flex items-center justify-center rounded-lg bg-custom-teal/20 shrink-0 size-12">
+<span class="material-symbols-outlined">directions_walk</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-custom-dark-grey dark:text-custom-off-white text-base font-medium leading-normal">Activity Suggestion</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Consider a short walk to clear your mind.</p>
+</div>
+</div>
+<p class="text-gray-400 dark:text-gray-500 text-xs font-medium shrink-0">Yesterday, 3:30 PM</p>
+</div>
+<div class="notification-item flex items-center gap-4 bg-transparent p-4 min-h-[72px] justify-between border-b border-custom-light-grey dark:border-white/10">
+<div class="flex items-center gap-4">
+<div class="text-custom-lavender flex items-center justify-center rounded-lg bg-custom-lavender/20 shrink-0 size-12">
+<span class="material-symbols-outlined">self_improvement</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-custom-dark-grey dark:text-custom-off-white text-base font-medium leading-normal">Mindfulness Moment</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Take a moment to focus on your breath.</p>
+</div>
+</div>
+<p class="text-gray-400 dark:text-gray-500 text-xs font-medium shrink-0">Yesterday, 1:00 PM</p>
+</div>
+<div class="notification-item flex items-center gap-4 bg-transparent p-4 min-h-[72px] justify-between">
+<div class="flex items-center gap-4">
+<div class="text-custom-teal flex items-center justify-center rounded-lg bg-custom-teal/20 shrink-0 size-12">
+<span class="material-symbols-outlined">edit_note</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-custom-dark-grey dark:text-custom-off-white text-base font-medium leading-normal">Gratitude Journal</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">What's one thing you're grateful for today?</p>
+</div>
+</div>
+<p class="text-gray-400 dark:text-gray-500 text-xs font-medium shrink-0">2 days ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Dark mode functionality
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.documentElement.classList.add('dark');
+    }
+    
+    // Load saved notification settings
+    loadNotificationSettings();
+    
+    // Setup search functionality
+    document.getElementById('notification-search').addEventListener('input', function() {
+        filterNotifications(this.value);
+    });
+});
+
+function loadNotificationSettings() {
+    const settings = JSON.parse(localStorage.getItem('notificationSettings') || '{}');
+    
+    // Apply saved settings
+    document.getElementById('master-toggle').checked = settings.masterToggle !== false;
+    document.getElementById('daily-checkins').checked = settings.dailyCheckins !== false;
+    document.getElementById('activity-prompts').checked = settings.activityPrompts === true;
+    document.getElementById('mindfulness-moments').checked = settings.mindfulnessMoments !== false;
+}
+
+function toggleMasterNotifications() {
+    const masterToggle = document.getElementById('master-toggle').checked;
+    
+    // Disable/enable all other toggles
+    document.getElementById('daily-checkins').disabled = !masterToggle;
+    document.getElementById('activity-prompts').disabled = !masterToggle;
+    document.getElementById('mindfulness-moments').disabled = !masterToggle;
+    
+    saveNotificationSettings();
+}
+
+function updateReminderSetting(settingId, enabled) {
+    saveNotificationSettings();
+    
+    // Show feedback
+    const settingName = settingId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const status = enabled ? 'enabled' : 'disabled';
+    console.log(`${settingName} ${status}`);
+}
+
+function saveNotificationSettings() {
+    const settings = {
+        masterToggle: document.getElementById('master-toggle').checked,
+        dailyCheckins: document.getElementById('daily-checkins').checked,
+        activityPrompts: document.getElementById('activity-prompts').checked,
+        mindfulnessMoments: document.getElementById('mindfulness-moments').checked
+    };
+    
+    localStorage.setItem('notificationSettings', JSON.stringify(settings));
+}
+
+function filterNotifications(searchTerm) {
+    const notifications = document.querySelectorAll('.notification-item');
+    const term = searchTerm.toLowerCase();
+    
+    notifications.forEach(notification => {
+        const title = notification.querySelector('p').textContent.toLowerCase();
+        const description = notification.querySelector('p:last-of-type').textContent.toLowerCase();
+        
+        if (title.includes(term) || description.includes(term)) {
+            notification.style.display = 'flex';
+        } else {
+            notification.style.display = 'none';
+        }
+    });
+}
+
+function createNewReminder() {
+    const reminderType = prompt('What type of reminder would you like to create?\n\n1. Daily Check-in\n2. Activity Prompt\n3. Mindfulness Moment\n4. Custom');
+    
+    if (reminderType) {
+        const time = prompt('What time would you like the reminder? (e.g., 9:00 AM)');
+        
+        if (time) {
+            alert(`Reminder "${reminderType}" scheduled for ${time}!`);
+            // In a real app, this would schedule the notification
+        }
+    }
+}
+</script>
+</body>
+</html>

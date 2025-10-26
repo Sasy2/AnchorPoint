@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Track Your Progress - Mental Health Coach</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#427cf0",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "teal": "#58A4B0",
+              "lavender": "#BDB2FF"
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 px-10 py-3">
+<div class="flex items-center gap-4 text-gray-800 dark:text-gray-200">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z"></path></svg>
+</div>
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Mental Health Coach</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-gray-800 dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary" href="index.html">Dashboard</a>
+<a class="text-gray-800 dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary" href="activities.html">Activities</a>
+<a class="text-primary dark:text-primary text-sm font-bold leading-normal" href="progress.html">Progress</a>
+<a class="text-gray-800 dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary" href="community.html">Journal</a>
+</div>
+<div class="flex gap-2">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300 gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300 gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCJDqNCplteBe3teXKzs-_6ZjgLlnBJG3b69q-ReXWCr7p5tZnuyNCXdE9oZQhYLgTpx7R9f81pIh4kBHC8h_u3v6xuP96SRiR3B-nECYTLYKolF3wEnQJV4p_rczvJjfnhOsxYLfI7SR1WTjKGieB4z2yAOe-oQWEl3ibApBHVzlJVoE1NT_6ISVHb-ECCEjLrB4eKRW-q9-Fh66Vv_idnbvx4Q6HCVyiHeMpvxEW5dQHD8syMgNlbEdxwb__y6-Yg2jZxZJ5kIKYc");'></div>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-10 px-4 sm:px-6 lg:px-8">
+<div class="layout-content-container flex flex-col max-w-2xl flex-1">
+<div class="flex flex-col gap-4 text-center items-center">
+<p class="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Track Your Progress</p>
+<p class="text-gray-500 dark:text-gray-400 text-lg font-normal leading-normal max-w-md">How are you feeling after today's activity? Your reflection helps us tailor your journey.</p>
+</div>
+<div class="flex flex-col gap-10 mt-12">
+<div class="@container w-full">
+<div class="relative flex w-full flex-col items-start justify-between gap-4 p-4">
+<div class="flex w-full shrink-[3] items-center justify-between">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal">Before Activity</p>
+<p id="before-mood" class="text-lg font-bold text-teal dark:text-teal">4</p>
+</div>
+<div class="flex h-4 w-full items-center gap-4">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 text-2xl">sentiment_very_dissatisfied</span>
+<div class="relative flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
+<div id="before-progress" class="h-full w-[33.33%] rounded-full bg-teal"></div>
+<div id="before-handle" class="absolute top-1/2 -translate-y-1/2 cursor-pointer" style="left: calc(33.33% - 12px);"><div class="size-6 rounded-full bg-white dark:bg-gray-800 border-2 border-teal shadow-md"></div></div>
+</div>
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 text-2xl">sentiment_very_satisfied</span>
+</div>
+</div>
+</div>
+<div class="@container w-full">
+<div class="relative flex w-full flex-col items-start justify-between gap-4 p-4">
+<div class="flex w-full shrink-[3] items-center justify-between">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal">After Activity</p>
+<p id="after-mood" class="text-lg font-bold text-teal dark:text-teal">8</p>
+</div>
+<div class="flex h-4 w-full items-center gap-4">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 text-2xl">sentiment_very_dissatisfied</span>
+<div class="relative flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
+<div id="after-progress" class="h-full w-[77.77%] rounded-full bg-teal"></div>
+<div id="after-handle" class="absolute top-1/2 -translate-y-1/2 cursor-pointer" style="left: calc(77.77% - 12px);"><div class="size-6 rounded-full bg-white dark:bg-gray-800 border-2 border-teal shadow-md"></div></div>
+</div>
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 text-2xl">sentiment_very_satisfied</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center gap-4 px-4 py-8 mt-4">
+<label class="flex flex-col w-full">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal pb-2">Add a note? (Optional)</p>
+<textarea id="progress-note" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-white dark:bg-background-dark min-h-36 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-4 text-base font-normal leading-normal" placeholder="Write about your experience, what you noticed, or anything else on your mind..."></textarea>
+</label>
+<button id="save-progress-btn" class="flex w-full max-w-xs cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-teal text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] px-6 mt-4 hover:bg-opacity-90 transition-colors duration-200" onclick="saveProgress()">Save Progress</button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</body>
+
+<script src="js/api.js"></script>
+<script>
+let beforeMood = 4;
+let afterMood = 8;
+let isDragging = false;
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Load saved mood from previous page
+    const selectedMood = localStorage.getItem('selectedMood');
+    if (selectedMood) {
+        const moodValues = {
+            'sad': 2,
+            'angry': 3,
+            'energized': 7,
+            'bored': 4
+        };
+        beforeMood = moodValues[selectedMood] || 4;
+        updateBeforeMoodDisplay();
+    }
+    
+    // Set up mood sliders
+    setupMoodSlider('before-handle', 'before-progress', 'before-mood', 'before');
+    setupMoodSlider('after-handle', 'after-progress', 'after-mood', 'after');
+    
+    // Dark mode functionality
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.documentElement.classList.add('dark');
+    }
+});
+
+function setupMoodSlider(handleId, progressId, moodId, type) {
+    const handle = document.getElementById(handleId);
+    const progress = document.getElementById(progressId);
+    const moodDisplay = document.getElementById(moodId);
+    const slider = handle.parentElement.parentElement.querySelector('.relative.flex-1');
+    
+    let currentMood = type === 'before' ? beforeMood : afterMood;
+    
+    function updateSlider(value) {
+        const percentage = ((value - 1) / 9) * 100;
+        progress.style.width = `${percentage}%`;
+        handle.style.left = `calc(${percentage}% - 12px)`;
+        moodDisplay.textContent = value;
+        
+        if (type === 'before') {
+            beforeMood = value;
+        } else {
+            afterMood = value;
+        }
+    }
+    
+    // Mouse events
+    handle.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        e.preventDefault();
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        
+        const rect = slider.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+        const value = Math.round((percentage / 100) * 9) + 1;
+        
+        updateSlider(value);
+    });
+    
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+    
+    // Touch events for mobile
+    handle.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        e.preventDefault();
+    });
+    
+    document.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        
+        const rect = slider.getBoundingClientRect();
+        const x = e.touches[0].clientX - rect.left;
+        const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+        const value = Math.round((percentage / 100) * 9) + 1;
+        
+        updateSlider(value);
+    });
+    
+    document.addEventListener('touchend', () => {
+        isDragging = false;
+    });
+    
+    // Click on slider
+    slider.addEventListener('click', (e) => {
+        const rect = slider.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+        const value = Math.round((percentage / 100) * 9) + 1;
+        
+        updateSlider(value);
+    });
+    
+    // Initialize display
+    updateSlider(currentMood);
+}
+
+function updateBeforeMoodDisplay() {
+    const percentage = ((beforeMood - 1) / 9) * 100;
+    document.getElementById('before-progress').style.width = `${percentage}%`;
+    document.getElementById('before-handle').style.left = `calc(${percentage}% - 12px)`;
+    document.getElementById('before-mood').textContent = beforeMood;
+}
+
+async function saveProgress() {
+    const note = document.getElementById('progress-note').value;
+    const activityId = localStorage.getItem('selectedActivity');
+    
+    if (!activityId) {
+        utils.showNotification('No activity selected', 'error');
+        return;
+    }
+    
+    const btn = document.getElementById('save-progress-btn');
+    const originalText = btn.textContent;
+    
+    try {
+        utils.showLoading(btn);
+        
+        await api.saveProgress(activityId, beforeMood, afterMood, note, 5); // 5 minutes default duration
+        
+        btn.textContent = 'Saved!';
+        btn.classList.add('bg-green-500');
+        
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.classList.remove('bg-green-500');
+            
+            // Navigate to goals page
+            window.location.href = 'goals.html';
+        }, 1500);
+        
+    } catch (error) {
+        utils.showNotification('Error saving progress', 'error');
+        utils.hideLoading(btn, originalText);
+    }
+}
+</script>
+</body>
+</html>

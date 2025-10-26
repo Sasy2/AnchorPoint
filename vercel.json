@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "name": "mental-health-coach-app",
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "JWT_SECRET": "@jwt-secret",
+    "GOOGLE_AI_API_KEY": "@google-ai-api-key",
+    "MONGODB_URI": "@mongodb-uri"
+  }
+}

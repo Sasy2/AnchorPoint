@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mental Health Coach - Personality Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        @layer utilities {
+          .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+          }
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#E6E6FA",
+              "secondary": "#78C2AD",
+              "accent": "#F9A19A",
+              "background-light": "#FDFDFD",
+              "background-dark": "#1F2937", /* Using a generic dark theme for contrast */
+              "text-light": "#333333",
+              "text-dark": "#FDFDFD"
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden text-text-light dark:text-text-dark">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 sm:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/50 dark:border-primary/20 px-4 sm:px-10 py-3">
+<div class="flex items-center gap-4">
+<div class="size-6 text-secondary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Mental Health Coach</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 sm:gap-8">
+<div class="hidden sm:flex items-center gap-6 md:gap-9">
+<a class="text-sm font-medium leading-normal" href="index.html">Dashboard</a>
+<a class="text-sm font-medium leading-normal" href="activities.html">Activities</a>
+<a class="text-sm font-medium leading-normal" href="progress.html">Journal</a>
+<a class="text-sm font-medium leading-normal" href="community.html">Community</a>
+</div>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 w-10 bg-primary/30 dark:bg-primary/10 text-text-light dark:text-text-dark gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfbDuuuBagMTORE-iah2iJl_K9_IM_fb-MzCzJvfOTWVop8oTeDc-nayXS6VVkeCGpvGHzyZ1063v8JFpR45CRFy6tKMnLD4FY3UuIwF62ikK3ltzOH7WeS7Rc3EGAF4Xm5TWxqNG2e-6dYmUs2IcvujbBAbzDast3TfrrA8P17yUWqzN8FJ-m7gBp6czqT1bB7uGh0zE8pJxswgfwcFpE_NHWDIHBJaVeGfCpGdgCyrAwaz-yqdLEFRI_Y4WwxSsY1q8tnN5pr77Z");'></div>
+</div>
+</header>
+<main class="flex flex-col flex-1 items-center justify-center py-10 px-4">
+<div class="w-full max-w-2xl flex flex-col gap-8">
+<div class="flex flex-col gap-3 text-center">
+<p class="text-4xl font-black leading-tight tracking-[-0.033em]">A Few Quick Questions to Get Started</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-base font-normal leading-normal">Answer these questions to help us personalize your activity recommendations.</p>
+</div>
+<div class="flex flex-col gap-3 p-4">
+<div class="flex gap-6 justify-between">
+<p class="text-base font-medium leading-normal">Question <span id="current-question">2</span> of 5</p>
+<p class="text-sm font-normal leading-normal"><span id="progress-percentage">40</span>%</p>
+</div>
+<div class="rounded-full bg-primary/40 dark:bg-primary/10"><div id="progress-bar" class="h-2 rounded-full bg-primary" style="width: 40%;"></div></div>
+</div>
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] bg-white dark:bg-gray-800">
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-4 p-6 sm:p-8">
+<p id="question-text" class="text-center text-xl font-bold leading-tight tracking-[-0.015em]">How do you usually recharge after a tough day?</p>
+<p class="text-center text-text-light/70 dark:text-text-dark/70 text-base font-normal leading-normal">Select the option that feels most like you. There are no right or wrong answers.</p>
+</div>
+<div id="options-container" class="flex flex-col gap-3 p-6 sm:p-8 pt-0">
+<!-- Options will be populated by JavaScript -->
+</div>
+</div>
+<div class="flex justify-between items-center p-4">
+<button id="back-btn" class="flex items-center justify-center gap-2 rounded-lg h-12 px-6 text-sm font-bold bg-transparent text-text-light/70 dark:text-text-dark/70 hover:bg-primary/20 dark:hover:bg-primary/10 transition-colors" onclick="previousQuestion()">
+<span class="material-symbols-outlined">arrow_back</span>
+                                    Back
+                                </button>
+<button id="next-btn" class="flex items-center justify-center gap-2 rounded-lg h-12 px-6 text-sm font-bold bg-primary text-text-light dark:bg-primary/80 dark:text-gray-800 hover:bg-secondary hover:text-white dark:hover:bg-secondary dark:hover:text-white transition-all transform hover:scale-105" onclick="nextQuestion()">
+                                    Next Question
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+const quizQuestions = [
+    {
+        question: "What's your primary goal with mental health support?",
+        options: [
+            "Reduce stress and anxiety",
+            "Improve mood and energy",
+            "Build better habits",
+            "Connect with others"
+        ]
+    },
+    {
+        question: "How do you usually recharge after a tough day?",
+        options: [
+            "Spending quiet time alone",
+            "Connecting with friends or loved ones",
+            "Engaging in a creative hobby",
+            "Getting active with exercise"
+        ]
+    },
+    {
+        question: "When you're feeling overwhelmed, what helps you most?",
+        options: [
+            "Taking deep breaths",
+            "Talking to someone",
+            "Writing in a journal",
+            "Going for a walk"
+        ]
+    },
+    {
+        question: "What time of day do you feel most energetic?",
+        options: [
+            "Early morning (6-9 AM)",
+            "Late morning (9-12 PM)",
+            "Afternoon (12-5 PM)",
+            "Evening (5-9 PM)"
+        ]
+    },
+    {
+        question: "How do you prefer to learn new techniques?",
+        options: [
+            "Guided audio instructions",
+            "Visual demonstrations",
+            "Written instructions",
+            "Interactive exercises"
+        ]
+    }
+];
+
+let currentQuestionIndex = 1; // Start at question 2 (index 1)
+let answers = {};
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderQuestion();
+    
+    // Dark mode functionality
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.documentElement.classList.add('dark');
+    }
+});
+
+function renderQuestion() {
+    const question = quizQuestions[currentQuestionIndex];
+    
+    // Update progress
+    const progress = ((currentQuestionIndex + 1) / quizQuestions.length) * 100;
+    document.getElementById('current-question').textContent = currentQuestionIndex + 1;
+    document.getElementById('progress-percentage').textContent = Math.round(progress);
+    document.getElementById('progress-bar').style.width = `${progress}%`;
+    
+    // Update question text
+    document.getElementById('question-text').textContent = question.question;
+    
+    // Render options
+    const optionsContainer = document.getElementById('options-container');
+    optionsContainer.innerHTML = '';
+    
+    question.options.forEach((option, index) => {
+        const optionElement = document.createElement('label');
+        optionElement.className = 'flex items-center gap-4 rounded-lg border border-solid border-primary/50 dark:border-primary/20 p-4 cursor-pointer hover:bg-primary/20 dark:hover:bg-primary/10 transition-colors has-[:checked]:bg-primary has-[:checked]:border-primary dark:has-[:checked]:bg-primary/50 dark:has-[:checked]:border-primary/50';
+        
+        optionElement.innerHTML = `
+            <input class="h-5 w-5 appearance-none rounded-full border-2 border-primary/80 dark:border-primary/30 bg-transparent text-transparent checked:border-secondary dark:checked:border-secondary checked:bg-secondary focus:outline-none focus:ring-0 focus:ring-offset-0" name="quiz-question-${currentQuestionIndex}" type="radio" value="${index}" onchange="selectAnswer(${index})"/>
+            <div class="flex grow flex-col"><p class="text-sm font-medium leading-normal">${option}</p></div>
+        `;
+        
+        optionsContainer.appendChild(optionElement);
+    });
+    
+    // Update button states
+    updateButtonStates();
+}
+
+function selectAnswer(optionIndex) {
+    answers[currentQuestionIndex] = optionIndex;
+    updateButtonStates();
+}
+
+function updateButtonStates() {
+    const backBtn = document.getElementById('back-btn');
+    const nextBtn = document.getElementById('next-btn');
+    
+    // Back button
+    backBtn.style.display = currentQuestionIndex > 0 ? 'flex' : 'none';
+    
+    // Next button
+    const hasAnswer = answers[currentQuestionIndex] !== undefined;
+    nextBtn.disabled = !hasAnswer;
+    nextBtn.style.opacity = hasAnswer ? '1' : '0.5';
+    
+    // Change text for last question
+    if (currentQuestionIndex === quizQuestions.length - 1) {
+        nextBtn.innerHTML = `
+            Complete Quiz
+            <span class="material-symbols-outlined">check</span>
+        `;
+    } else {
+        nextBtn.innerHTML = `
+            Next Question
+            <span class="material-symbols-outlined">arrow_forward</span>
+        `;
+    }
+}
+
+function nextQuestion() {
+    if (answers[currentQuestionIndex] === undefined) {
+        alert('Please select an answer before continuing.');
+        return;
+    }
+    
+    if (currentQuestionIndex === quizQuestions.length - 1) {
+        // Complete quiz
+        completeQuiz();
+    } else {
+        currentQuestionIndex++;
+        renderQuestion();
+    }
+}
+
+function previousQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        renderQuestion();
+    }
+}
+
+function completeQuiz() {
+    // Save quiz results
+    localStorage.setItem('quizAnswers', JSON.stringify(answers));
+    
+    // Calculate personality type based on answers
+    const personalityType = calculatePersonalityType(answers);
+    localStorage.setItem('personalityType', personalityType);
+    
+    // Show completion message
+    alert(`Quiz completed! Your personality type: ${personalityType}`);
+    
+    // Navigate to activities page
+    window.location.href = 'activities.html';
+}
+
+function calculatePersonalityType(answers) {
+    // Simple personality calculation based on answer patterns
+    const types = {
+        'calm-seeker': 0,
+        'social-connector': 0,
+        'creative-explorer': 0,
+        'active-energizer': 0
+    };
+    
+    // Map answers to personality traits
+    Object.values(answers).forEach(answer => {
+        switch(answer) {
+            case 0: types['calm-seeker']++; break;
+            case 1: types['social-connector']++; break;
+            case 2: types['creative-explorer']++; break;
+            case 3: types['active-energizer']++; break;
+        }
+    });
+    
+    // Return the dominant type
+    return Object.keys(types).reduce((a, b) => types[a] > types[b] ? a : b);
+}
+</script>
+</body>
+</html>

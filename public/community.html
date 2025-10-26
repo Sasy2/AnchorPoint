@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Community Space</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#43efef",
+            "background-light": "#f6f8f8",
+            "background-dark": "#102222",
+            "text-light": "#111818",
+            "text-dark": "#e0e4e4",
+            "subtext-light": "#618989",
+            "subtext-dark": "#94a3b8",
+            "border-light": "#dbe6e6",
+            "border-dark": "#2d3f3f",
+            "surface-light": "#ffffff",
+            "surface-dark": "#1a2c2c",
+            "surface-subtle-light": "#f0f4f4",
+            "surface-subtle-dark": "#233535"
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="relative flex min-h-screen w-full">
+<!-- SideNavBar -->
+<aside class="sticky top-0 h-screen w-64 flex-shrink-0 bg-surface-light dark:bg-surface-dark border-r border-border-light dark:border-border-dark p-4">
+<div class="flex h-full flex-col justify-between">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-2 px-3">
+<div class="text-primary" data-icon="Sparkle" data-size="32px" data-weight="fill">
+<span class="material-symbols-outlined" style="font-size: 32px; font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<h1 class="text-xl font-bold">MindWell</h1>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 px-3 py-2">
+<span class="material-symbols-outlined text-subtext-light dark:text-subtext-dark">grid_view</span>
+<p class="text-sm font-medium text-subtext-light dark:text-subtext-dark">Dashboard</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2">
+<span class="material-symbols-outlined text-subtext-light dark:text-subtext-dark">favorite</span>
+<p class="text-sm font-medium text-subtext-light dark:text-subtext-dark">Activities</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2">
+<span class="material-symbols-outlined text-subtext-light dark:text-subtext-dark">support_agent</span>
+<p class="text-sm font-medium text-subtext-light dark:text-subtext-dark">My Coach</p>
+</div>
+<div class="flex items-center gap-3 rounded-lg bg-surface-subtle-light dark:bg-surface-subtle-dark px-3 py-2">
+<span class="material-symbols-outlined text-text-light dark:text-text-dark" style="font-variation-settings: 'FILL' 1;">groups</span>
+<p class="text-sm font-bold text-text-light dark:text-text-dark">Community</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2">
+<span class="material-symbols-outlined text-subtext-light dark:text-subtext-dark">book_4</span>
+<p class="text-sm font-medium text-subtext-light dark:text-subtext-dark">Journal</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 border-t border-border-light dark:border-border-dark pt-4">
+<div class="flex items-center gap-3 px-3">
+<div class="aspect-square size-10 rounded-full bg-cover bg-center" data-alt="User profile picture of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCve6rNn63RdRBglc3unS_Xu1-4rjt812IQ1YiTAQMEOLKCoQPTa5J20GlTQCM5i4E2vc4xhkPFJlDCjakhQbAp77DbEt08iZSSrOguz7ntywqiafbF5wKHFYeubf8eNBwVeqbO8p0pf3bSeLQqP0g7_vMt_BmMcAMgKCKHvG-FQSNmC01yxp8j9DWTRua2Pq8uWFDHD7RLGMHfySIvTEGkfxg9u5gUM9u2bh7b_-1cKxld105PLpCohMrKgyb_o1a7MwHN2mQXXADA");'></div>
+<div class="flex flex-col">
+<h1 class="text-base font-medium">Alex Doe</h1>
+<p class="text-sm font-normal text-subtext-light dark:text-subtext-dark cursor-pointer hover:underline">View Profile</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto">
+<div class="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
+<!-- PageHeading -->
+<div class="flex flex-wrap items-end justify-between gap-4 p-4">
+<div class="flex min-w-72 flex-col gap-2">
+<p class="text-4xl font-black leading-tight tracking-[-0.033em]">Our Shared Space</p>
+<p class="text-base font-normal text-subtext-light dark:text-subtext-dark">A safe place to share, connect, and support each other.</p>
+</div>
+</div>
+<!-- Composer -->
+<div class="px-4 py-3">
+<div class="flex items-start gap-4 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark p-4">
+<div class="aspect-square size-10 flex-shrink-0 rounded-full bg-cover bg-center" data-alt="User profile picture of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDYY97No_UYLoy_sLIxKlrhWwROOi34uqqVZlAcjyvUJAFc5ZHc2iBCbt0LsxyUlRTBlAoRItCht4IKWVab-F8bk6vc8M-YLioNYJiemEDgEvcGYDe4kgMBRcxIffWsh97nGSf3yQIl8voTlDFJStatgWdrkhc_pKr-iBs3IvDulTEYIQkb9rRoa7r2QM3v6JrTh8r-LDTqI7KAzpQUQpQCkN9iKaoT5NL1W0iXIcwHDDPa9voV-1Ci4K_37FjZKvN3W74KC02WMMgJ");'></div>
+<div class="flex-1">
+<textarea id="post-textarea" class="form-input w-full resize-none border-0 bg-transparent p-0 text-text-light dark:text-text-dark placeholder:text-subtext-light dark:placeholder:text-subtext-dark focus:outline-0 focus:ring-0" placeholder="Share what's on your mind..." rows="2"></textarea>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex items-center gap-1">
+<button class="flex items-center justify-center p-1.5 rounded-full hover:bg-surface-subtle-light dark:hover:bg-surface-subtle-dark">
+<span class="material-symbols-outlined text-subtext-light dark:text-subtext-dark" style="font-size: 20px;">add_a_photo</span>
+</button>
+<button class="flex items-center justify-center p-1.5 rounded-full hover:bg-surface-subtle-light dark:hover:bg-surface-subtle-dark">
+<span class="material-symbols-outlined text-subtext-light dark:text-subtext-dark" style="font-size: 20px;">sell</span>
+</button>
+<button class="flex items-center justify-center p-1.5 rounded-full hover:bg-surface-subtle-light dark:hover:bg-surface-subtle-dark">
+<span class="material-symbols-outlined text-subtext-light dark:text-subtext-dark" style="font-size: 20px;">mood</span>
+</button>
+</div>
+<button id="post-btn" class="h-10 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-primary px-5 text-sm font-medium text-text-light" onclick="createPost()">
+<span class="truncate">Post</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Feed -->
+<div class="flex flex-col gap-6 p-4">
+<!-- Card 1 -->
+<div class="rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<div class="p-6">
+<div class="flex gap-4">
+<div class="aspect-square size-10 flex-shrink-0 rounded-full bg-cover bg-center" data-alt="Anonymous user icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCYhtYdPEyolZu44jV2jJjOLjDu1dhqiPrs8x8QyyOJ7h2mVYzsMBMhB2r1jzuOesDIB2tCBaywkhkIJO9c1EgcBGLUnpxXMzlCki6ci4dA_axaw9kCob4YOr4ZlsQmGWv5vtLmeYGTTijWGPcvWyOSRe8P87H3ZI_IDA0QZAg6VqL9rKV2JL2maIs_4YlN4BefJSlggLlf2ZnZw1s6shFU6CSh651ubVzugzlhFMXLH3YVpRR0yUHG-IBw766VJLlavy3AfiluKnEP");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-1">
+<div class="flex items-center gap-2">
+<p class="text-sm font-normal text-subtext-light dark:text-subtext-dark">Posted Anonymously • 2 hours ago</p>
+</div>
+<p class="text-lg font-bold leading-tight tracking-[-0.015em]">Feeling grateful for small wins today</p>
+<p class="mt-2 text-base font-normal text-subtext-light dark:text-subtext-dark">It's been a tough week, but I managed to go for a walk this morning and it really helped clear my head. Trying to focus on these small moments of peace. Hope everyone is doing okay.</p>
+</div>
+</div>
+</div>
+<!-- ActionsBar -->
+<div class="border-t border-border-light dark:border-border-dark px-4 py-2">
+<div class="flex flex-wrap items-center justify-start gap-4">
+<button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-surface-subtle-light dark:hover:bg-surface-subtle-dark" onclick="toggleSupport(this)">
+<span class="material-symbols-outlined text-rose-500" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>Support (12)</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-surface-subtle-light dark:hover:bg-surface-subtle-dark" onclick="showComments(this)">
+<span class="material-symbols-outlined">chat_bubble_outline</span>
+<span>Comment (3)</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-surface-subtle-light dark:hover:bg-surface-subtle-dark" onclick="reportPost(this)">
+<span class="material-symbols-outlined">flag</span>
+<span>Report</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<div class="p-6">
+<div class="flex gap-4">
+<div class="aspect-square size-10 flex-shrink-0 rounded-full bg-cover bg-center" data-alt="Profile picture of a coach" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCSfHjI3SdkU3jW7fKpbMqLgWxkGl-JeXNZc6Esjtx-KvXsRpk9D8U5_A6YOOIVhcs34q080fJ_B2egNQ4r5cRB_4urLtK24UHO_wsHoHmzCPlvRlK2hso0EG07NzNB5iJmFRTwCGctoHJevV_-AW4QabCwie8l9ndPQHFYkyvcvBcCOGwU1z0XakD187R24I_uW2S0DDPYXhauyVtNNtBb8gdtaDLGGSJe_iZtVnWc_aiNczLmBwoti65EczXJvxZj81qfos4S9eVC");'></div>
+<div class="flex w-full flex-col gap-1">
+<div class="flex items-center gap-2">
+<p class="font-semibold">Dr. Emily Carter</p>
+<span class="inline-flex items-center rounded-full bg-primary/20 px-2 py-0.5 text-xs font-medium text-primary dark:text-primary">COACH</span>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">• 5 hours ago</p>
+</div>
+<p class="text-lg font-bold leading-tight tracking-[-0.015em]">Weekly Reflection Prompt</p>
+<p class="mt-2 text-base font-normal text-subtext-light dark:text-subtext-dark">Hi everyone! This week, let's reflect on one thing, no matter how small, that brought a smile to your face. Sharing these moments can be a powerful way to cultivate positivity. What's yours?</p>
+</div>
+</div>
+</div>
+<!-- ActionsBar -->
+<div class="border-t border-border-light dark:border-border-dark px-4 py-2">
+<div class="flex flex-wrap items-center justify-start gap-4">
+<button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-surface-subtle-light dark:hover:bg-surface-subtle-dark" onclick="toggleSupport(this)">
+<span class="material-symbols-outlined">favorite_border</span>
+<span>Support (47)</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-surface-subtle-light dark:hover:bg-surface-subtle-dark" onclick="showComments(this)">
+<span class="material-symbols-outlined">chat_bubble_outline</span>
+<span>Comment (19)</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-surface-subtle-light dark:hover:bg-surface-subtle-dark" onclick="reportPost(this)">
+<span class="material-symbols-outlined">flag</span>
+<span>Report</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<div class="p-6 @container">
+<div class="flex flex-col items-stretch justify-start gap-4">
+<div class="flex gap-4">
+<div class="aspect-square size-10 flex-shrink-0 rounded-full bg-cover bg-center" data-alt="User profile picture of Sam" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBkS8SSw_9Wl6zDX77mcUEJoCXk99PZ0nnDwVEfSm2UepUgcFqkssDQzBHjqxfQLjzqboEV_HtDMGg5jVE8XY2fUdwUmtSQhdp497nSrtkxZ0Ilofbslc5i5DRHFVCyfss7YeTxNptaylnaL_iHdk7_nCWx36RZ9xRxx_okfGhAPmzQRbb2YEuSsvIpj3AofWMsnlAVsioMrzJjX8rYqigVaA9G8_tMYXoF4MS5DsG0Ao_LxCtaj50Gc5c391Z_fahu3Gq4BCgkyml7");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-1">
+<p class="text-sm font-normal text-subtext-light dark:text-subtext-dark">Sam Jones • 1 day ago</p>
+<p class="text-lg font-bold leading-tight tracking-[-0.015em]">Struggling with motivation for work</p>
+<p class="mt-2 text-base font-normal text-subtext-light dark:text-subtext-dark">Lately, I've found it really hard to get started with my tasks for the day. It feels like a huge mountain to climb. Does anyone have tips on how to handle this feeling?</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ActionsBar -->
+<div class="border-t border-border-light dark:border-border-dark px-4 py-2">
+<div class="flex flex-wrap items-center justify-start gap-4">
+<button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-surface-subtle-light dark:hover:bg-surface-subtle-dark" onclick="toggleSupport(this)">
+<span class="material-symbols-outlined">favorite_border</span>
+<span>Support (8)</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-surface-subtle-light dark:hover:bg-surface-subtle-dark" onclick="showComments(this)">
+<span class="material-symbols-outlined">chat_bubble_outline</span>
+<span>Comment (5)</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-surface-subtle-light dark:hover:bg-surface-subtle-dark" onclick="reportPost(this)">
+<span class="material-symbols-outlined">flag</span>
+<span>Report</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Sidebar -->
+<aside class="sticky top-0 hidden h-screen w-80 flex-shrink-0 border-l border-border-light dark:border-border-dark p-6 xl:block">
+<div class="flex flex-col gap-6">
+<!-- Community Guidelines Card -->
+<div class="rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark p-5">
+<div class="flex items-center gap-3">
+<div class="rounded-full bg-primary/20 p-2 text-primary">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<h3 class="text-lg font-bold">Community Guidelines</h3>
+</div>
+<ul class="mt-4 space-y-3 text-sm text-subtext-light dark:text-subtext-dark">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined mt-0.5 text-base">check_circle</span>
+<span>Be Kind and Respectful</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined mt-0.5 text-base">check_circle</span>
+<span>No Medical Advice</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined mt-0.5 text-base">check_circle</span>
+<span>Share Mindfully & Protect Privacy</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined mt-0.5 text-base">check_circle</span>
+<span>Report Concerns</span>
+</li>
+</ul>
+</div>
+<!-- Topics to Explore Card -->
+<div class="rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark p-5">
+<div class="flex items-center gap-3">
+<div class="rounded-full bg-primary/20 p-2 text-primary">
+<span class="material-symbols-outlined">explore</span>
+</div>
+<h3 class="text-lg font-bold">Topics to Explore</h3>
+</div>
+<div class="mt-4 flex flex-wrap gap-2">
+<button class="topic-tag rounded-full bg-surface-subtle-light dark:bg-surface-subtle-dark px-3 py-1.5 text-sm font-medium hover:bg-primary/20">#Gratitude</button>
+<button class="topic-tag rounded-full bg-surface-subtle-light dark:bg-surface-subtle-dark px-3 py-1.5 text-sm font-medium hover:bg-primary/20">#Anxiety</button>
+<button class="topic-tag rounded-full bg-surface-subtle-light dark:bg-surface-subtle-dark px-3 py-1.5 text-sm font-medium hover:bg-primary/20">#SmallWins</button>
+<button class="topic-tag rounded-full bg-surface-subtle-light dark:bg-surface-subtle-dark px-3 py-1.5 text-sm font-medium hover:bg-primary/20">#Mindfulness</button>
+<button class="topic-tag rounded-full bg-surface-subtle-light dark:bg-surface-subtle-dark px-3 py-1.5 text-sm font-medium hover:bg-primary/20">#Motivation</button>
+</div>
+</div>
+<!-- Emergency Resources Card -->
+<div class="rounded-xl border-2 border-red-500/50 bg-red-500/10 p-5 dark:bg-red-500/20">
+<div class="flex items-center gap-3">
+<div class="rounded-full p-2 text-red-500">
+<span class="material-symbols-outlined">sos</span>
+</div>
+<h3 class="text-lg font-bold text-red-700 dark:text-red-400">Emergency Resources</h3>
+</div>
+<p class="mt-2 text-sm text-red-600 dark:text-red-300">If you are in a crisis or any other person may be in danger, please get help immediately.</p>
+<button class="mt-4 w-full rounded-lg bg-red-500 px-4 py-2 text-sm font-semibold text-white hover:bg-red-600" onclick="showEmergencyResources()">
+                    Get Immediate Help
+                </button>
+</div>
+</div>
+</aside>
+</div>
+</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Dark mode functionality
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.documentElement.classList.add('dark');
+    }
+    
+    // Setup topic tag filtering
+    document.querySelectorAll('.topic-tag').forEach(tag => {
+        tag.addEventListener('click', function() {
+            const topic = this.textContent;
+            document.getElementById('post-textarea').value = `${topic} `;
+            document.getElementById('post-textarea').focus();
+        });
+    });
+});
+
+function createPost() {
+    const textarea = document.getElementById('post-textarea');
+    const content = textarea.value.trim();
+    
+    if (!content) {
+        alert('Please write something before posting.');
+        return;
+    }
+    
+    // In a real app, this would send to a server
+    alert('Post created successfully!');
+    textarea.value = '';
+}
+
+function toggleSupport(button) {
+    const icon = button.querySelector('.material-symbols-outlined');
+    const text = button.querySelector('span:last-child');
+    
+    if (icon.style.fontVariationSettings.includes("'FILL' 1")) {
+        // Unlike
+        icon.style.fontVariationSettings = "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24";
+        icon.classList.remove('text-rose-500');
+        const count = parseInt(text.textContent.match(/\d+/)[0]) - 1;
+        text.textContent = text.textContent.replace(/\d+/, count);
+    } else {
+        // Like
+        icon.style.fontVariationSettings = "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24";
+        icon.classList.add('text-rose-500');
+        const count = parseInt(text.textContent.match(/\d+/)[0]) + 1;
+        text.textContent = text.textContent.replace(/\d+/, count);
+    }
+}
+
+function showComments(button) {
+    // In a real app, this would show a comments modal
+    alert('Comments feature coming soon!');
+}
+
+function reportPost(button) {
+    if (confirm('Are you sure you want to report this post?')) {
+        alert('Thank you for your report. Our team will review it.');
+    }
+}
+
+function showEmergencyResources() {
+    const resources = `
+Emergency Resources:
+• National Suicide Prevention Lifeline: 988
+• Crisis Text Line: Text HOME to 741741
+• National Alliance on Mental Illness: 1-800-950-NAMI
+• Emergency Services: 911
+
+Remember: You are not alone. Help is available 24/7.
+    `;
+    alert(resources);
+}
+</script>
+</body>
+</html>
