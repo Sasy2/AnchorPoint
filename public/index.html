@@ -52,12 +52,6 @@
 <div class="flex flex-1 justify-end gap-8">
 <div class="flex items-center gap-9"></div>
 <div class="flex gap-2">
-<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em] transition-colors hover:bg-primary/30 dark:bg-primary/30 dark:hover:bg-primary/40">
-<span class="truncate">Log In</span>
-</button>
-<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] transition-opacity hover:opacity-90">
-<span class="truncate">Sign Up</span>
-</button>
 </div>
 </div>
 </header>
@@ -99,33 +93,15 @@
 </div>
 </div>
 
-<script src="js/api.js"></script>
 <script>
-// Authentication and mood selection functionality
-document.addEventListener('DOMContentLoaded', async function() {
-    // Check if user is authenticated
-    const isAuthenticated = await auth.checkAuth();
-    
-    if (isAuthenticated) {
-        // User is logged in, show personalized content
-        updateUIForAuthenticatedUser();
-    } else {
-        // Show login/register options
-        showAuthOptions();
-    }
-    
+// Simplified mood selection - no authentication required
+document.addEventListener('DOMContentLoaded', function() {
     // Mood selection functionality
     const moodButtons = document.querySelectorAll('.mood-btn');
     
     moodButtons.forEach(button => {
-        button.addEventListener('click', async function() {
+        button.addEventListener('click', function() {
             const mood = this.getAttribute('data-mood');
-            
-            if (!isAuthenticated) {
-                // Redirect to login if not authenticated
-                showLoginModal();
-                return;
-            }
             
             // Store the selected mood
             localStorage.setItem('selectedMood', mood);
@@ -149,178 +125,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         document.documentElement.classList.add('dark');
     }
 });
-
-async function updateUIForAuthenticatedUser() {
-    try {
-        const user = await api.getUserProfile();
-        
-        // Update header to show user info
-        const header = document.querySelector('header');
-        const userInfo = document.createElement('div');
-        userInfo.className = 'flex items-center gap-3';
-        userInfo.innerHTML = `
-            <div class="flex items-center gap-2">
-                <span class="text-sm text-gray-600 dark:text-gray-300">Welcome back, ${user.name}</span>
-                <button onclick="auth.logout()" class="text-xs text-primary hover:underline">Logout</button>
-            </div>
-        `;
-        
-        // Replace login/signup buttons with user info
-        const authButtons = header.querySelector('.flex.gap-2');
-        if (authButtons) {
-            authButtons.replaceWith(userInfo);
-        }
-        
-        // Load personalized activities
-        await loadRecommendedActivities();
-        
-    } catch (error) {
-        console.error('Error loading user data:', error);
-        utils.showNotification('Error loading user data', 'error');
-    }
-}
-
-function showAuthOptions() {
-    // Add click handlers to login/signup buttons
-    const buttons = document.querySelectorAll('header button');
-    const loginBtn = Array.from(buttons).find(btn => btn.textContent.includes('Log In'));
-    const signupBtn = Array.from(buttons).find(btn => btn.textContent.includes('Sign Up'));
-    
-    if (loginBtn) {
-        loginBtn.addEventListener('click', () => showLoginModal());
-    }
-    
-    if (signupBtn) {
-        signupBtn.addEventListener('click', () => showSignupModal());
-    }
-}
-
-async function loadRecommendedActivities() {
-    try {
-        const activities = await api.getRecommendedActivities();
-        
-        // Update activities section with personalized recommendations
-        const activitiesSection = document.querySelector('.grid.grid-cols-1.sm\\:grid-cols-2');
-        if (activitiesSection && activities.length > 0) {
-            activitiesSection.innerHTML = activities.slice(0, 4).map(activity => `
-                <button class="mood-btn flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-16 px-5 bg-white dark:bg-background-dark/50 text-gray-800 dark:text-gray-200 text-base font-bold leading-normal tracking-[0.015em] w-full border border-gray-200 dark:border-gray-700 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 dark:hover:border-primary/50" data-activity="${activity._id}">
-                    <span class="truncate">${activity.title}</span>
-                </button>
-            `).join('');
-            
-            // Add click handlers for activity buttons
-            activitiesSection.querySelectorAll('.mood-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const activityId = this.getAttribute('data-activity');
-                    localStorage.setItem('selectedActivity', activityId);
-                    window.location.href = 'activities.html';
-                });
-            });
-        }
-    } catch (error) {
-        console.error('Error loading recommended activities:', error);
-    }
-}
-
-function showLoginModal() {
-    const modal = createAuthModal('login');
-    document.body.appendChild(modal);
-}
-
-function showSignupModal() {
-    const modal = createAuthModal('signup');
-    document.body.appendChild(modal);
-}
-
-function createAuthModal(type) {
-    const modal = document.createElement('div');
-    modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50';
-    modal.innerHTML = `
-        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md w-full">
-            <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                ${type === 'login' ? 'Log In' : 'Sign Up'}
-            </h2>
-            <form id="auth-form" class="space-y-4">
-                ${type === 'signup' ? `
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
-                        <input type="text" id="name" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50">
-                    </div>
-                ` : ''}
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
-                    <input type="email" id="email" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
-                    <input type="password" id="password" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50">
-                </div>
-                <div class="flex gap-3">
-                    <button type="submit" class="flex-1 bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary/90 transition-colors">
-                        ${type === 'login' ? 'Log In' : 'Sign Up'}
-                    </button>
-                    <button type="button" onclick="this.closest('.fixed').remove()" class="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                        Cancel
-                    </button>
-                </div>
-            </form>
-            <div class="mt-4 text-center">
-                <button onclick="switchAuthType('${type === 'login' ? 'signup' : 'login'}')" class="text-sm text-primary hover:underline">
-                    ${type === 'login' ? "Don't have an account? Sign up" : "Already have an account? Log in"}
-                </button>
-            </div>
-        </div>
-    `;
-    
-    // Add form submission handler
-    const form = modal.querySelector('#auth-form');
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const formData = new FormData(form);
-        const email = form.querySelector('#email').value;
-        const password = form.querySelector('#password').value;
-        const name = form.querySelector('#name')?.value;
-        
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        
-        try {
-            utils.showLoading(submitBtn);
-            
-            let result;
-            if (type === 'login') {
-                result = await auth.login(email, password);
-            } else {
-                result = await auth.register(email, password, name);
-            }
-            
-            if (result.success) {
-                utils.showNotification(`${type === 'login' ? 'Login' : 'Registration'} successful!`, 'success');
-                modal.remove();
-                location.reload(); // Refresh to show authenticated state
-            } else {
-                utils.showNotification(result.error, 'error');
-            }
-        } catch (error) {
-            utils.showNotification('An error occurred. Please try again.', 'error');
-        } finally {
-            utils.hideLoading(submitBtn, originalText);
-        }
-    });
-    
-    return modal;
-}
-
-function switchAuthType(newType) {
-    // Remove current modal and show new one
-    document.querySelector('.fixed.inset-0')?.remove();
-    if (newType === 'login') {
-        showLoginModal();
-    } else {
-        showSignupModal();
-    }
-}
 </script>
 </body>
 </html>
