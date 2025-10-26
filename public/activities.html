@@ -164,15 +164,8 @@
 </div>
 </body>
 
-<script src="js/api.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', async function() {
-    // Check authentication
-    if (!await auth.checkAuth()) {
-        window.location.href = 'index.html';
-        return;
-    }
-    
+document.addEventListener('DOMContentLoaded', function() {
     // Display the selected mood
     const selectedMood = localStorage.getItem('selectedMood');
     const moodDisplay = document.getElementById('mood-display');
@@ -186,9 +179,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         };
         moodDisplay.textContent = moodTexts[selectedMood] || 'anxious';
     }
-    
-    // Load activities from backend
-    await loadActivities();
     
     // Activity button functionality
     const activityButtons = document.querySelectorAll('.activity-btn');
@@ -230,67 +220,5 @@ document.addEventListener('DOMContentLoaded', async function() {
         document.documentElement.classList.add('dark');
     }
 });
-
-async function loadActivities() {
-    try {
-        const activities = await api.getActivities();
-        
-        // Update activities list
-        const activitiesContainer = document.querySelector('.flex.flex-col.gap-4');
-        if (activitiesContainer && activities.length > 0) {
-            activitiesContainer.innerHTML = activities.slice(0, 4).map(activity => `
-                <div class="flex items-center gap-4 bg-white dark:bg-background-dark dark:border dark:border-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
-                    <div class="flex items-center gap-4 flex-1">
-                        <div class="text-[#111318] dark:text-primary flex items-center justify-center rounded-lg bg-primary/20 dark:bg-primary/30 shrink-0 size-12">
-                            <span class="material-symbols-outlined">${getActivityIcon(activity.category)}</span>
-                        </div>
-                        <div class="flex flex-col justify-center">
-                            <p class="text-[#111318] dark:text-white text-base font-medium leading-normal line-clamp-1">${activity.title}</p>
-                            <p class="text-[#616f89] dark:text-gray-400 text-sm font-normal leading-normal line-clamp-2">${activity.description}</p>
-                        </div>
-                    </div>
-                    <div class="shrink-0">
-                        <button class="activity-btn flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-medium leading-normal hover:bg-primary/90 transition-colors" data-activity="${activity._id}">
-                            <span class="truncate">Start Exercise</span>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-            
-            // Re-add event listeners for new buttons
-            activitiesContainer.querySelectorAll('.activity-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const activityId = this.getAttribute('data-activity');
-                    localStorage.setItem('selectedActivity', activityId);
-                    
-                    // Navigate to appropriate page based on activity category
-                    const activity = activities.find(a => a._id === activityId);
-                    if (activity) {
-                        if (activity.category === 'breathing') {
-                            window.location.href = 'breathing.html';
-                        } else {
-                            window.location.href = 'progress.html';
-                        }
-                    }
-                });
-            });
-        }
-    } catch (error) {
-        console.error('Error loading activities:', error);
-        utils.showNotification('Error loading activities', 'error');
-    }
-}
-
-function getActivityIcon(category) {
-    const icons = {
-        'breathing': 'self_improvement',
-        'mindfulness': 'psychology',
-        'gratitude': 'favorite',
-        'movement': 'directions_run',
-        'journaling': 'edit_note',
-        'relaxation': 'spa'
-    };
-    return icons[category] || 'self_improvement';
-}
 </script>
 </html>
