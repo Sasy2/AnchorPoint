@@ -63,16 +63,16 @@
                             </p>
 <div class="flex justify-center mt-8">
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-[640px] px-4 py-3">
-<button class="mood-btn flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-16 px-5 bg-white dark:bg-background-dark/50 text-gray-800 dark:text-gray-200 text-base font-bold leading-normal tracking-[0.015em] w-full border border-gray-200 dark:border-gray-700 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 dark:hover:border-primary/50" data-mood="sad">
+<button onclick="navigateToActivities('sad')" class="mood-btn flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-16 px-5 bg-white dark:bg-background-dark/50 text-gray-800 dark:text-gray-200 text-base font-bold leading-normal tracking-[0.015em] w-full border border-gray-200 dark:border-gray-700 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 dark:hover:border-primary/50">
 <span class="truncate">I'm feeling sad</span>
 </button>
-<button class="mood-btn flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-16 px-5 bg-white dark:bg-background-dark/50 text-gray-800 dark:text-gray-200 text-base font-bold leading-normal tracking-[0.015em] w-full border border-gray-200 dark:border-gray-700 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 dark:hover:border-primary/50" data-mood="angry">
+<button onclick="navigateToActivities('angry')" class="mood-btn flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-16 px-5 bg-white dark:bg-background-dark/50 text-gray-800 dark:text-gray-200 text-base font-bold leading-normal tracking-[0.015em] w-full border border-gray-200 dark:border-gray-700 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 dark:hover:border-primary/50">
 <span class="truncate">I'm feeling angry</span>
 </button>
-<button class="mood-btn flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-16 px-5 bg-white dark:bg-background-dark/50 text-gray-800 dark:text-gray-200 text-base font-bold leading-normal tracking-[0.015em] w-full border border-gray-200 dark:border-gray-700 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 dark:hover:border-primary/50" data-mood="energized">
+<button onclick="navigateToActivities('energized')" class="mood-btn flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-16 px-5 bg-white dark:bg-background-dark/50 text-gray-800 dark:text-gray-200 text-base font-bold leading-normal tracking-[0.015em] w-full border border-gray-200 dark:border-gray-700 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 dark:hover:border-primary/50">
 <span class="truncate">I'm feeling energized</span>
 </button>
-<button class="mood-btn flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-16 px-5 bg-white dark:bg-background-dark/50 text-gray-800 dark:text-gray-200 text-base font-bold leading-normal tracking-[0.015em] w-full border border-gray-200 dark:border-gray-700 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 dark:hover:border-primary/50" data-mood="bored">
+<button onclick="navigateToActivities('bored')" class="mood-btn flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-16 px-5 bg-white dark:bg-background-dark/50 text-gray-800 dark:text-gray-200 text-base font-bold leading-normal tracking-[0.015em] w-full border border-gray-200 dark:border-gray-700 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 dark:hover:border-primary/50">
 <span class="truncate">I'm feeling bored</span>
 </button>
 </div>
@@ -94,20 +94,24 @@
 </div>
 
 <script>
+// Navigation function - simple and direct
+function navigateToActivities(mood) {
+    console.log('Navigating to activities with mood:', mood);
+    // Store the selected mood
+    localStorage.setItem('selectedMood', mood);
+    
+    // Navigate to activities page
+    window.location.href = 'activities.html';
+}
+
 // Simplified mood selection - no authentication required
 document.addEventListener('DOMContentLoaded', function() {
-    // Mood selection functionality
+    // Mood selection functionality (backup in case onclick doesn't work)
     const moodButtons = document.querySelectorAll('.mood-btn');
     
     moodButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const mood = this.getAttribute('data-mood');
-            
-            // Store the selected mood
-            localStorage.setItem('selectedMood', mood);
-            
-            // Navigate to activities page
-            window.location.href = 'activities.html';
+            // This will be called as backup
         });
     });
     
