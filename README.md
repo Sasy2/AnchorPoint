@@ -4,7 +4,7 @@ A comprehensive mental health support application with backend API, AI chatbot i
 
 ## 🚀 Live Demo
 
-**Website URL**: [https://mental-health-coach-app.vercel.app](https://mental-health-coach-app.vercel.app)
+**Website URL**: [https://anchorpoint.vercel.app](https://anchorpoint.vercel.app)
 
 The application is fully functional and can be used on both PC and mobile devices.
 
@@ -243,4 +243,4 @@ For technical support or questions:
 
 **Remember**: This app is not a substitute for professional mental health care. Always consult with qualified healthcare providers for medical advice.
 
-**Live Demo**: [https://mental-health-coach-app.vercel.app](https://mental-health-coach-app.vercel.app)
+**Live Demo**: [https://anchorpoint.vercel.app](https://anchorpoint.vercel.app)
