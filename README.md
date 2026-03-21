@@ -243,4 +243,4 @@ For technical support or questions:
 
 **Remember**: This app is not a substitute for professional mental health care. Always consult with qualified healthcare providers for medical advice.
 
-**Live Demo**: [https://anchorpoint.vercel.app](https://anchorpoint.vercel.app)
+**Live Demo**: https://anchorpoint-eight.vercel.app/
