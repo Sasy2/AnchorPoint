@@ -4,7 +4,7 @@ A comprehensive mental health support application with backend API, AI chatbot i
 
 ## 🚀 Live Demo
 
-**Website URL**: [https://anchorpoint.vercel.app](https://anchorpoint.vercel.app)
+**Website URL**: [[https://anchorpoint.vercel.app](https://anchorpoint.vercel.app)](https://anchorpoint-eight.vercel.app/)
 
 The application is fully functional and can be used on both PC and mobile devices.
 
